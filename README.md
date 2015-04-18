@@ -1,7 +1,5 @@
-cafofo-hightech-shield
-======================
-
 Cafofo Hightech
+===============
 
 É um projeto pessoal para automatizar meu apartamento utilizando HTML, javascript, CSS e Arduino. O acesso é através do protocolo HTTP, o qual pode ser acessado através de celulares, tablets ou computador.
 
