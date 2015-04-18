@@ -1,0 +1,24 @@
+
+
+TODO
+====
+* documentar funcoes
+* da pra usar porta analogica?
+* explicar como pegar o enderço do OneWire
+* Remover do padrão o OneWire?
+
+C
+* pensar melhor nas variaves do sensor de temperadura
+* salvar o valor da fita ler e retornar no xml
+* se na URL nao passar parametro (/) deve abrir o index - http://en.wikipedia.org/wiki/URL_redirection#HTTP_status_codes_3xx
+
+HTML
+* fazer slider funcionar no FF
+* adicionar acao no botao de ambiente
+* aumentar o tamnho dos icones (stop, play, etc)
+* colocar icone de garagem
+* aquario e outras coisas
+* melhorar o arduino ambient, pode passar por parameto, quais é para apagar
+
+JS
+* se colocar timeout 0, entra em loop muito rapido, descobrir como definir um valor para nao ter refresh

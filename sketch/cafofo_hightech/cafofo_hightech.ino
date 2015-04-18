@@ -1,19 +1,19 @@
-/* 
+/*
 
 Cafofo Hightech
- 
- Description about the project:
- created 2011 by Felipe Nogaroto Gonzalez <felipeng84 @ gmail . com>
-  
- This code is in the public domain.
- License: 
- Code: http://githu......
- 
+
+Description about the project:
+created 2011 by Felipe Nogaroto Gonzalez <felipeng84 @ gmail . com>
+
+This code is in the public domain.
+License: MIT
+Code: http://github.com/felipeng/cafofo-hightech
+
 Reserved pins for EthernetShield
 Arduino Uno: 4, 10, 11, 12 and 13
 Ardino Mega: 4, 10, 50, 51 and 52
 
- */
+*/
 #include <SPI.h>
 #include <Ethernet.h>
 #include <SD.h>
@@ -66,7 +66,7 @@ void setup() {
   pinMode(38, OUTPUT);
   pinMode(39, OUTPUT);
   pinMode(40, OUTPUT);
-  
+
   // Ethernet - Reserved Pins
   pinMode(10, OUTPUT);
   digitalWrite(10, HIGH);
@@ -89,7 +89,7 @@ void loop() {
           if ((HTTP_request.startsWith("GET ")) && (HTTP_request.endsWith("\r"))) {
             sscanf(HTTP_request.c_str(), "GET /%99[^&/ ]/%99[^/]/%99d/%99d", arg1, arg2, &arg3, &arg4);
             HTTP_switch(client, arg1, arg2, arg3, arg4);
-          } 
+          }
       }
       client.stop();
       delay(1);
@@ -130,7 +130,7 @@ void HTTP_switch(EthernetClient client, char arg1[20], char oper[20], int pin, i
 // HTTP reply with the value
 void HTTP_reply(EthernetClient client, int value) {
   client.println("HTTP/1.1 200 OK");
-  client.println("Access-Control-Allow-Origin: *");   
+  client.println("Access-Control-Allow-Origin: *");
   client.println("Access-Control-Allow-Methods: GET");
   client.println("Content-Type: text/plain");
   client.println("Connection: close");
@@ -164,7 +164,7 @@ void HTTP_reply_file(EthernetClient client, char arg1[20]){
 // HTTP reply with the values in xml file
 void HTTP_reply_xml(EthernetClient client) {
   client.println("HTTP/1.1 200 OK");
-  client.println("Access-Control-Allow-Origin: *");   
+  client.println("Access-Control-Allow-Origin: *");
   client.println("Access-Control-Allow-Methods: GET");
   client.println("Connection: close");
   client.println();
@@ -224,4 +224,3 @@ int getTemperature(int pin, byte dsAddress[8]){
   float temp = (256 | dsData);
   return temp;
 }
-

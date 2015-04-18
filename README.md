@@ -28,13 +28,13 @@ ao Arduino, o qual possui um servidor HTTP. Ao acessar o index.htm no onLoad é 
 
 API REST
 
-http://192.168.0.1/status.xml = solicitar status dos sensores/pinos
-http://192.168.0.1/arquivo    = solicitar algum arquivo do cartão SD
+http://ARDUINO_IP/status.xml = solicitar status dos sensores/pinos
+http://ARDUINO_IP/arquivo    = solicitar algum arquivo do cartão SD
 
-http://192.168.0.1:/arduino/digitalRead/5/0    = digitalRead(5)
-http://192.168.0.1:/arduino/digitalRead/5/0    = analogRead(5)
-http://192.168.0.1:/arduino/digitalWrite/5/1   = digitalWrite(5, HIGH)
-http://192.168.0.1:/arduino/analogWrite/5/250  = analogWrite(5, 250)
+http://ARDUINO_IP:/arduino/digitalRead/5/0    = digitalRead(5)
+http://ARDUINO_IP:/arduino/digitalRead/5/0    = analogRead(5)
+http://ARDUINO_IP:/arduino/digitalWrite/5/1   = digitalWrite(5, HIGH)
+http://ARDUINO_IP:/arduino/analogWrite/5/250  = analogWrite(5, 250)
 
 
 Instalação

@@ -1,9 +1,9 @@
 // DESCREVER
 arduinoIP = "";	      //
 //arduinoIP = "http://192.168.69.252/";
-debug = 1;            // browser console
-ajax_cache = 1;	      // recomend to use without AJAX cache
 refresh = 1000;	      // in miliseconds
+debug = 0;            // browser console
+ajax_cache = 0;	      // recommended to use without AJAX cache, 0
 
 // DESCREVER
 var request = new XMLHttpRequest();
