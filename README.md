@@ -1,78 +1,67 @@
 Cafofo Hightech
 ===============
 
-É um projeto pessoal para automatizar meu apartamento utilizando HTML, javascript, CSS e Arduino. O acesso é através do protocolo HTTP, o qual pode ser acessado através de celulares, tablets ou computador.
+O projeto Cafofo Hightech foi desenvolvido para ser uma plataforma de automação
+residencial utilizando o Arduino. É composto por uma interface web que realiza a comunicação com o Arduino através de API REST HTTP. Nasceu de um projeto pessoal para automatização de apartamento, após muito estudo e dedicação, resolvi compartilhá-lo livremente seu código, quem sabe seja útil para outras pessoas.
 
-A interface web é baseada no iOS, porém pode ser facilmente modificada para criação de temas.
+É desenvolvido em HTML, CSS, JavaScript e C (Arduino Sketch). O acesso é através do protocolo HTTP, ou seja smartphones, tablets, computador, etc.
 
-Testado com Arduino UNO e Arduino Mega 2650, não é restrição pode ser adaptado pra outras placas como Raspberry Pi, BeagleBone, etc
+O tema inicial é baseada no iOS 7, porém pode ser facilmente modificada para criação outros temas.
 
-Componentes:
+Foi testado com Arduino UNO e Arduino Mega 2650, isso não é restrição, pode ser adaptado pra outras placas como Raspberry Pi, BeagleBone, etc.
 
-Arduino:
-* Arduino (UNO ou Mega 2650)
-* Recebe os eventos dos sensores
-* Servidor HTTP
-* Cartão SD: imagens, html e javascript
-* API Rest
 
-Componentes:
-* EthernetShield
-* Fita LED:
-* Temperatura: D18B20
-* Relês: Relay channel 8 canais
-* Sensor de corrente: ACS5xxx
-* É flexível para adicionar qualquer outro tipo de sensor
-* jumpers, fios, conectores
+Como Funciona
+-------------
 
-Alimentação:
-* Fonte 5V:
-* Fonte 5V:
-* Fonte 12V:
+Uma página estática (index.htm) é armazenada no cartão SD no EthernetShield conectado
+ao Arduino, o qual possui um servidor HTTP. Ao acessar o index.htm no onLoad é chamado a função GetStatus, a qual solicita ao Arduino (API REST) o arquivo status.xml. O Arduino executa a função HTTP_reply_xml, a qual lê os valores dos sensores e retorna o status.xml com os valores. Em seguida a função GetStatus realiza um "parser" dos campos XML e atualiza a página com os valores. Por padrão é solicitado o status.xml a cada 1s, para manter as informações sincronizadas.
 
-Como funciona:
-Ao acessar o arduino via HTTP, é chamado a função GetStatus no onLoad, o qual solicita ao arduino o arquivo status.xml. O arduino executa a função HTTP_reply_xml a qual lê os valores dos sensores e retorna o arquivo status.xml com os valores. Em seguida a função GetStatus do javascript faz o parser dos campos XML e alimenta a página.
+API REST
 
-http://192.168.0.1/status.xml
-http://192.168.0.1/arduino
+http://192.168.0.1/status.xml = solicitar status dos sensores/pinos
+http://192.168.0.1/arquivo    = solicitar algum arquivo do cartão SD
 
-REST API (examples)
-http://ARDUINO_IP:/arduino/digitalRead/5/0    = digitalRead(5)
-http://ARDUINO_IP:/arduino/digitalRead/5/0    = analogRead(5)
-http://ARDUINO_IP:/arduino/digitalWrite/5/1   = digitalWrite(5, HIGH)
-http://ARDUINO_IP:/arduino/analogWrite/5/250  = analogWrite(5, 250)
+http://192.168.0.1:/arduino/digitalRead/5/0    = digitalRead(5)
+http://192.168.0.1:/arduino/digitalRead/5/0    = analogRead(5)
+http://192.168.0.1:/arduino/digitalWrite/5/1   = digitalWrite(5, HIGH)
+http://192.168.0.1:/arduino/analogWrite/5/250  = analogWrite(5, 250)
 
-TODO:
-* diagrama
-* fotos
-* Falar das limitações
-* guia de instalação
-* construção da fita led
+Componentes
+------------
 
-Instalação:
-* Abrir o sketch no Arduino
-Ajustar as variáveis:
-Fazer upload
- * posso usar os pinos D0 e D1, (ao fazer upload, nao deixei nada conectado na porta D0 e D1)
- 
-Abrir o main.js, ajustar as variáveis
+* Arduino
+* Ethernet Shield com leitor SD
+* Cartão SD para armazenar HTML, CSS, imagens e javascript
+* Jumpers
+* LEDs
+* Resistores
+* Sensores
 
-Formatar o SD como FAT16 ou FAT32
-Copiar os arquivos para o SD
-Detalhes importantes por limitação do FAT:
-* não utilizar pastas
-* não utilizar nome de arquivos com mais de 8 caracteres
+Instalação
+----------
 
-================== 
-TODO:
+Favor ler o arquivo INSTALL
+
+
+Contribuições
+-------------
+
+Caso possua sugestões, correções ou contribuição de temas, imagens ou código
+entre em contato.
+Se gostou do projeto e está utilizando, conte-me :)
+
+
+TODO
+====
 * documentar funcoes
 * da pra usar porta analogica?
-    
+
 C
 * pensar melhor nas variaves do sensor de temperadura
 * salvar o valor da fita ler e retornar no xml
 * se na URL nao passar parametro (/) deve abrir o index - http://en.wikipedia.org/wiki/URL_redirection#HTTP_status_codes_3xx
-       
+
 HTML
 * fazer slider funcionar no FF
 * adicionar acao no botao de ambiente
@@ -80,6 +69,6 @@ HTML
 * colocar icone de garagem
 * aquario e outras coisas
 * melhorar o arduino ambient, pode passar por parameto, quais é para apagar
-               
+
 JS
 * se colocar timeout 0, entra em loop muito rapido, descobrir como definir um valor para nao ter refresh
