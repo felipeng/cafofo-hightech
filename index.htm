@@ -1,0 +1,114 @@
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html;charset=utf-8" >
+	<title>Cafofo Hightech</title>
+        <!-- iPhone start -->
+            <meta content="yes" name="apple-mobile-web-app-capable" />
+	    <meta content="minimum-scale=1.0, width=device-width, maximum-scale=0.6667, user-scalable=no" name="viewport" />
+    	    <link href="i_logo.png" rel="apple-touch-icon" />
+         <!-- iPhone end -->
+        <link href="ios.css" rel="stylesheet" media="screen" type="text/css" />
+        <script src="main.js"></script>
+    </head>
+    <body onload="GetStatus()">
+        <div class="top">
+              <nav class="tabs tabs-three">
+                <a href="index.htm" class="tab active">Main</a>
+                <a href="index.htm" class="tab">Room 1</a>
+                <a href="index.htm" class="tab">Room 2</a>
+              </nav>
+            <a href="index.htm" class="topicon">
+                +
+            </a>
+        </div>
+        <h2>TEMPERATURE</h2>
+        <ul>
+            <li>
+                <img src="i_temp.png">
+                Room
+                <div class="temp action" id="2"></div>
+            </li>
+        </ul>
+        <h2>LIGHTING</h2>
+            <ul>
+            <li>
+                <img src="i_light.png">
+                Lamp 00
+                <label class="switch action">
+                    <input class="switch-input lamp" onChange="arduinoWrite(this)" type="checkbox" id="0">
+                    <span class="switch-label"></span>
+                </label>
+            </li>
+            <li>
+                <img src="i_light.png">
+                Lamp 01
+                <label class="switch action">
+                    <input class="switch-input lamp" onChange="arduinoWrite(this)" type="checkbox" id="1">
+                    <span class="switch-label"></span>
+                </label>
+            </li>
+            <li>
+                <img src="i_light.png">
+                Lamp 05
+                <label class="switch action">
+                    <input class="switch-input lamp" onChange="arduinoWrite(this)" type="checkbox" id="5">
+                    <span class="switch-label"></span>
+                </label>
+            </li>
+            <li>
+                <img src="i_light.png">
+                Lamp 06
+                <label class="switch action">
+                    <input class="switch-input lamp" onChange="arduinoWrite(this)" type="checkbox" id="6">
+                    <span class="switch-label"></span>
+                </label>
+            </li>
+            <li>
+                <img src="i_light.png">
+                Lamp 07
+                <label class="switch action">
+                    <input class="switch-input lamp" onChange="arduinoWrite(this)" type="checkbox" id="7">
+                    <span class="switch-label"></span>
+                </label>
+            </li>
+            <li>
+                <img src="i_light.png">
+                Lamp 08
+                <label class="switch action">
+                    <input class="switch-input lamp" onChange="arduinoWrite(this)" type="checkbox" id="8">
+                    <span class="switch-label"></span>
+                </label>
+            </li>
+            <li>
+                <img src="i_light.png">
+                Lamp 09
+                <label class="switch action">
+                    <input class="switch-input lamp" onChange="arduinoWrite(this)" type="checkbox" id="9">
+                    <span class="switch-label"></span>
+                </label>
+            </li>
+        </ul>
+        <h2>LED STRIP</h2>
+        <ul>
+            <li>
+              Led Strip 01
+                <img class="action" src="i_slider.png">
+       	        <input class="ledstrip action" value="0" type="range" min="0" max="250" step="50" value="0" onchange="arduinoWrite(this)" oninput="slider_color(this)" id="3">
+                <img style="margin-top: 10px; width: 15px;" class="action" src="i_slider.png">
+            </li>
+        </ul>
+        <h2>AMBIENT</h2>
+        <ul>
+            <li>
+                <img src="i_movie.png">
+                Movie
+		<img onclick="arduinoAmbient(this)" class="action" src="i_control_play.png" id="movie">
+            </li>
+            <li>
+                <img src="i_alloff.png">
+                All Off
+		<img onclick="arduinoAmbient(this)" class="action" src="i_control_play.png" id="alloff">
+            </li>
+        </ul>
+    </body>
+</html>
