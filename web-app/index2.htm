@@ -1,0 +1,137 @@
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html;charset=utf-8" >
+	<title>Cafofo Hightech</title>
+        <!-- iPhone start -->
+            <meta content="yes" name="apple-mobile-web-app-capable" />
+	    <meta content="minimum-scale=1.0, width=device-width, maximum-scale=0.6667, user-scalable=no" name="viewport" />
+    	    <link href="i_logo.png" rel="apple-touch-icon" />
+        <!-- iPhone end -->
+        <link href="ios.css" rel="stylesheet" media="screen" type="text/css" />
+        <script src="main.js"></script>
+    </head>
+    <body onload="GetStatus()">
+<!--
+        <div class="top">
+              <nav class="tabs tabs-three">
+                <a href="index.htm" class="tab active">Main</a>
+                <a href="index.htm" class="tab">Room 1</a>
+                <a href="index.htm" class="tab">Room 2</a>
+              </nav>
+            <a href="index.htm" class="topicon">
+                +
+            </a>
+-->
+        </div>
+        <h2>TEMPERATURA</h2>
+        <ul>
+            <li>
+                <img src="i_temp.png">
+                Sala
+                <div class="temp action" id="30"></div>
+            </li>
+            <li>
+                <img src="i_temp.png">
+                Quarto
+                <div class="temp action" id="40"></div>
+            </li>
+        </ul>
+        <h2>ILUMINAÇÃO</h2>
+            <ul>
+            <li>
+                <img src="i_light.png">
+                Aparador
+                <label class="switch action">
+                    <input class="switch-input lamp" onChange="arduinoWrite(this)" type="checkbox" id="31">
+                    <span class="switch-label"></span>
+                </label>
+            </li>
+            <li>
+                <img src="i_light.png">
+                Central
+                <label class="switch action">
+                    <input class="switch-input lamp" onChange="arduinoWrite(this)" type="checkbox" id="32">
+                    <span class="switch-label"></span>
+                </label>
+            </li>
+            <li>
+                <img src="i_light.png">
+                Sofá
+                <label class="switch action">
+                    <input class="switch-input lamp" onChange="arduinoWrite(this)" type="checkbox" id="33">
+                    <span class="switch-label"></span>
+                </label>
+            </li>
+            <li>
+                <img src="i_light.png">
+                Parede Tijolos
+                <label class="switch action">
+                    <input class="switch-input lamp" onChange="arduinoWrite(this)" type="checkbox" id="34">
+                    <span class="switch-label"></span>
+                </label>
+            </li>
+            <li>
+                <img src="i_light.png">
+                Nichos
+                <label class="switch action">
+                    <input class="switch-input lamp" onChange="arduinoWrite(this)" type="checkbox" id="36">
+                    <span class="switch-label"></span>
+                </label>
+            </li>
+            <li>
+                <img src="i_light.png">
+                Bancada
+                <label class="switch action">
+                    <input class="switch-input lamp" onChange="arduinoWrite(this)" type="checkbox" id="35">
+                    <span class="switch-label"></span>
+                </label>
+            </li>
+            <li>
+                <img src="i_light.png">
+                Quarto
+                <label class="switch action">
+                    <input class="switch-input lamp" onChange="arduinoWrite(this)" type="checkbox" id="41">
+                    <span class="switch-label"></span>
+                </label>
+            </li>
+        </ul>
+        <h2>FITA LED</h2>
+        <ul>
+            <li>
+                Parade Tijolos
+                <img class="action" src="i_slider.png">
+	        <input class="ledstrip action" value="0" type="range" min="0" max="250" step="50" onchange="arduinoWrite(this)" oninput="slider_color(this)" id="6">
+                <img style="margin-top: 10px; width: 15px;" class="action" src="i_slider.png">
+            </li>
+            <li>
+        	Mesa Jantar
+        	<img class="action" src="i_slider.png">
+	        <input class="ledstrip action" value="0" type="range" min="0" max="250" step="50" onchange="arduinoWrite(this)" oninput="slider_color(this)" id="5">
+                <img style="margin-top: 10px; width: 15px;" class="action" src="i_slider.png">
+            </li>
+            <li>
+        	Sacada Quarto
+                <img class="action" src="i_slider.png">
+	        <input class="ledstrip action" value="0" type="range" min="0" max="250" step="50" onchange="arduinoWrite(this)" oninput="slider_color(this)" id="7">
+                <img style="margin-top: 10px; width: 15px;" class="action" src="i_slider.png">
+            </li>
+        </ul>
+        <h2>AMBIENTES</h2>
+        <ul>
+            <li>
+                Movie
+                <div class="action">
+                    <div onClick="arduinoWrite('teste');" class="control_stop pointer"></div>
+                </div>
+            </li>
+            <li>
+                All Off
+                <div class="action">
+                    <div onClick="arduinoWriteC('alloff');" class="control_stop pointer">
+                        <img src="i_control_stop.png">
+    		    </div>
+                </div>
+            </li>
+        </ul>
+    </body>
+</html>
