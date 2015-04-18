@@ -1,4 +1,7 @@
-* Abrir o sketch no Arduino
+Instalação
+==========
+
+# Abrir o sketch no Arduino
 Ajustar as variáveis:
 Fazer upload
  * posso usar os pinos D0 e D1, (ao fazer upload, nao deixei nada conectado na porta D0 e D1)
@@ -6,12 +9,10 @@ Fazer upload
 Abrir o main.js, ajustar as variáveis
 
 
-Problemas Conhecidos
---------------------
+Problemas Conhecidos e Limitações
+---------------------------------
 
-Formatar o SD como FAT16 ou FAT32
-Copiar os arquivos para o SD
-Detalhes importantes por limitação do FAT:
-* não utilizar pastas
-* não utilizar nome de arquivos com mais de 8 caracteres
-
+* Formatar o cartão SD com sistemas de arquivos FAT16
+* Limitação do FAT:
+** não utilizar pastas
+** não utilizar nome de arquivos com mais de 8 caracteres no total
