@@ -34,9 +34,11 @@ ao Arduino, o qual possui um servidor HTTP. Ao acessar o index.htm no onLoad é 
 
 ## Instalação
 
-Ver o arquivo INSTALL
+Ver o arquivo INSTALL.md
 
 ## Contribuições
 
 Caso possua sugestões, correções ou contribuição de temas, imagens ou código
 entre em contato. Se gostou do projeto e está utilizando, conte-me :)
+
+Icons made with: http://icons8.com

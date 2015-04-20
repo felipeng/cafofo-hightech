@@ -1,7 +1,7 @@
 // DESCREVER
 arduinoIP = "";	      //
 //arduinoIP = "http://192.168.69.252/";
-refresh = 1000;	      // in miliseconds
+refresh = 10000;	      // in miliseconds
 debug = 0;            // browser console
 ajax_cache = 0;	      // recommended to use without AJAX cache, 0
 
@@ -45,15 +45,20 @@ function GetStatus() {
 
 // CUSTOM
 function arduinoAmbient(elem){
-    switch (elem.id){
+  switch (elem.id){
 	case "alloff":
 	    alert(elem.id);
 	    break;
 	case "movie":
       alert(elem.id);
-	    // ArduinoRequest("arduino/digitalWrite/2/0");
 	    break;
-	default:
+  case "game":
+      alert(elem.id);
+	    break;
+  case "romance":
+      alert(elem.id);
+	    break;
+  default:
 	    alert("invalido");
     }
 }
