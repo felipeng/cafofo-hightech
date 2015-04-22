@@ -1,121 +1,127 @@
 <html>
-    <head>
-      <meta http-equiv="Content-Type" content="text/html;charset=utf-8" >
-	    <title>Cafofo Hightech</title>
-      <!-- iPhone start -->
-      <meta content="yes" name="apple-mobile-web-app-capable" />
-	    <meta content="minimum-scale=1.0, width=device-width, maximum-scale=0.6667, user-scalable=no" name="viewport" />
-    	<link href="i_logo.png" rel="apple-touch-icon" />
-      <!-- iPhone end -->
-      <link href="ios.css" rel="stylesheet" media="screen" type="text/css" />
-      <script src="main.js"></script>
-    </head>
-    <body onload="GetStatus()">
-        <div class="top">
-              <nav class="tabs tabs-three">
-                <a href="index.htm" class="tab active">Main</a>
-                <a href="index.htm" class="tab">Room 1</a>
-                <a href="index.htm" class="tab">Room 2</a>
-              </nav>
-        </div>
-        <h2>TEMPERATURE</h2>
-        <ul>
-            <li>
-                <img class="icon" src="i_temp.png">
-                Room
-                <div class="temp action" id="2"></div>
-            </li>
-        </ul>
-        <h2>LIGHTING</h2>
-            <ul>
-            <li>
-                <img class="icon" src="i_light.png">
-                Lamp 00
-                <label class="switch action">
-                    <input class="switch-input lamp" onChange="arduinoWrite(this)" type="checkbox" id="0">
-                    <span class="switch-label"></span>
-                </label>
-            </li>
-            <li>
-                <img class="icon" src="i_light.png">
-                Lamp 01
-                <label class="switch action">
-                    <input class="switch-input lamp" onChange="arduinoWrite(this)" type="checkbox" id="1">
-                    <span class="switch-label"></span>
-                </label>
-            </li>
-            <li>
-                <img class="icon" src="i_light.png">
-                Lamp 05
-                <label class="switch action">
-                    <input class="switch-input lamp" onChange="arduinoWrite(this)" type="checkbox" id="5">
-                    <span class="switch-label"></span>
-                </label>
-            </li>
-            <li>
-                <img class="icon" src="i_light.png">
-                Lamp 06
-                <label class="switch action">
-                    <input class="switch-input lamp" onChange="arduinoWrite(this)" type="checkbox" id="6">
-                    <span class="switch-label"></span>
-                </label>
-            </li>
-            <li>
-                <img class="icon" src="i_light.png">
-                Lamp 07
-                <label class="switch action">
-                    <input class="switch-input lamp" onChange="arduinoWrite(this)" type="checkbox" id="7">
-                    <span class="switch-label"></span>
-                </label>
-            </li>
-            <li>
-                <img class="icon" src="i_light.png">
-                Lamp 08
-                <label class="switch action">
-                    <input class="switch-input lamp" onChange="arduinoWrite(this)" type="checkbox" id="8">
-                    <span class="switch-label"></span>
-                </label>
-            </li>
-            <li>
-                <img class="icon" src="i_light.png">
-                Lamp 09
-                <label class="switch action">
-                    <input class="switch-input lamp" onChange="arduinoWrite(this)" type="checkbox" id="9">
-                    <span class="switch-label"></span>
-                </label>
-            </li>
-        </ul>
-        <h2>LED STRIP</h2>
-        <ul>
-            <li>
-              Led Strip 01
-              <img class="range_big action" src="i_range.png">
-              <input class="ledstrip action" value="0" type="range" min="0" max="250" step="50" value="0" onchange="arduinoWrite(this)" oninput="slider_color(this)" id="3">
-              <img class="range_small action" src="i_range.png">
-            </li>
-        </ul>
-        <h2>AMBIENT</h2>
-        <ul>
-          <li>
-              <img class="icon" src="i_movie.png">
-              Movie
-              <img onclick="arduinoAmbient(this)" class="action icon" src="i_play.png" id="movie">
-          </li>
-          <li>
-              <img class="icon" src="i_romance.png">
-              Romance
-              <img onclick="arduinoAmbient(this)" class="action icon" src="i_play.png" id="romance">
-          </li>
-          <li>
-              <img class="icon" src="i_game.png">
-              Video Game
-              <img onclick="arduinoAmbient(this)" class="action icon" src="i_play.png" id="game">
-          </li>
-          <li>
-              <img class="icon" src="i_alloff.png">
-              All Off
-		          <img onclick="arduinoAmbient(this)" class="action icon" src="i_play.png" id="alloff">
-          </li>
-        </ul>
-    </body>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8" >
+    <title>Cafofo Hightech</title>
+    <!-- iPhone start -->
+    <meta content="yes" name="apple-mobile-web-app-capable" />
+    <meta content="minimum-scale=1.0, width=device-width, maximum-scale=0.6667, user-scalable=no" name="viewport" />
+  	<link href="i_logo.png" rel="apple-touch-icon" />
+    <link href="ios.css" rel="stylesheet" media="screen" type="text/css" />
+    <!-- iPhone end -->
+    <script src="main.js"></script>
+  </head>
+  <body onload="GetStatus()">
+    <div class="top">
+      <nav class="tabs tabs-three">
+        <a href="index.htm" class="tab active">Main</a>
+        <a href="#" class="tab">Room 1</a>
+        <a href="#" class="tab">Room 2</a>
+      </nav>
+    </div>
+    <h2>TEMPERATURE</h2>
+    <ul>
+        <li>
+            <img class="icon" src="i_temp.png">
+            Room (pin 0)
+            <div class="temp action" id="0"></div>
+        </li>
+    </ul>
+    <h2>DOOR</h2>
+    <ul>
+      <li>
+        <img class="icon" src="i_garage.png">
+        Door 1 (pin 1)
+        <label class="switch action">
+            <input class="switch-input toggle" onChange="arduinoWrite(this)" type="checkbox" id="1">
+            <span class="switch-label"></span>
+        </label>
+      </li>
+    </ul>
+    <h2>LIGHTING</h2>
+    <ul>
+      <li>
+          <img class="icon" src="i_light.png">
+          Lamp 1 (pin 2)
+          <label class="switch action">
+            <input class="switch-input toggle" onChange="arduinoWrite(this)" type="checkbox" id="2">
+            <span class="switch-label"></span>
+          </label>
+      </li>
+      <li>
+        <img class="icon" src="i_light.png">
+        Lamp 2 (pin 6)
+        <label class="switch action">
+          <input class="switch-input toggle" onChange="arduinoWrite(this)" type="checkbox" id="6">
+          <span class="switch-label"></span>
+        </label>
+      </li>
+      <li>
+        <img class="icon" src="i_light.png">
+        Lamp 3 (pin 7)
+        <label class="switch action">
+          <input class="switch-input toggle" onChange="arduinoWrite(this)" type="checkbox" id="7">
+          <span class="switch-label"></span>
+        </label>
+      </li>
+      <li>
+        <img class="icon" src="i_light.png">
+        Lamp 4 (pin 8)
+        <label class="switch action">
+          <input class="switch-input toggle" onChange="arduinoWrite(this)" type="checkbox" id="8">
+          <span class="switch-label"></span>
+        </label>
+      </li>
+      <li>
+        <img class="icon" src="i_light.png">
+        Lamp 5 (pin 9)
+        <label class="switch action">
+          <input class="switch-input toggle" onChange="arduinoWrite(this)" type="checkbox" id="9">
+          <span class="switch-label"></span>
+        </label>
+      </li>
+    </ul>
+    <h2>LED STRIP</h2>
+    <ul>
+      <li>
+        Led Strip 1 (pin 3)
+        <img class="range_big action" src="i_range.png">
+        <input class="ledstrip action" value="0" type="range" min="0" max="250" step="50" value="0" onchange="arduinoWrite(this)" oninput="slider_color(this)" id="3">
+        <img class="range_small action" src="i_range.png">
+      </li>
+      <li>
+        Led Strip 2 (pin 5)
+        <img class="range_big action" src="i_range.png">
+        <input class="ledstrip action" value="0" type="range" min="0" max="250" step="50" value="0" onchange="arduinoWrite(this)" oninput="slider_color(this)" id="5">
+        <img class="range_small action" src="i_range.png">
+      </li>
+    </ul>
+    <h2>AMBIENT</h2>
+    <ul>
+      <li>
+        <img class="icon" src="i_movie.png">
+        Movie
+        <img onclick="arduinoAmbient(this)" class="action icon" src="i_play.png" id="movie">
+      </li>
+      <li>
+        <img class="icon" src="i_sex.png">
+        Romance
+        <img onclick="arduinoAmbient(this)" class="action icon" src="i_play.png" id="sex">
+      </li>
+      <li>
+        <img class="icon" src="i_game.png">
+        Video Game
+        <img onclick="arduinoAmbient(this)" class="action icon" src="i_play.png" id="game">
+      </li>
+      <li>
+        <img class="icon" src="i_allon.png">
+        All On
+         <img onclick="arduinoAmbient(this)" class="action icon" src="i_play.png" id="allon">
+      </li>
+      <li>
+        <img class="icon" src="i_alloff.png">
+        All Off
+        <img onclick="arduinoAmbient(this)" class="action icon" src="i_play.png" id="alloff">
+      </li>
+    </ul>
+  </body>
 </html>

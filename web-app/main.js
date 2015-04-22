@@ -19,7 +19,7 @@ function GetStatus() {
                 var temps = document.getElementsByClassName('temp');
                 for (var temp = 0; temp < temps.length; temp++){
             	    var temperature = xml.getElementsByTagName('temp_' + temps[temp].id)[0].childNodes[0].nodeValue;
-            	    temps[temp].innerHTML = ( temperature / 16).toFixed(0) + ' °C';
+            	    temps[temp].innerHTML = (temperature / 16).toFixed(0) + ' °C';
 		}
 
                 // Lamps

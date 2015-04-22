@@ -8,11 +8,13 @@ de brower HTTP, ou seja, qualquer smartphone, tablet, computador, etc.
 
 O tema inicial é baseada no iOS 7, porém pode ser facilmente modificada para criação outros temas. Foi testado com Arduino UNO e Arduino Mega 2650, não sendo uma restrição, pode ser facilmente adaptado pra outras placas como Raspberry Pi, BeagleBone, etc.
 
+Is a pure HTML/JS interface, it mimics an iPhone app (iOS7). It not only works on iPod/iPhone/iPad, but also perfectly on Android. So where ever you are and whatever device you have available, you should be able to access the UI to operate your home.
+
 ## Componentes
 
 * Arduino
 * Ethernet Shield com leitor SD
-* Cartão SD para armazenar HTML, CSS, imagens e javascript
+* Cartão SD para armazenar HTML5, CSS, imagens e javascript
 * Jumpers
 * LEDs
 * Resistores

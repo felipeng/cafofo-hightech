@@ -2,72 +2,72 @@
 
 Cafofo Hightech
 
-Description about the project:
-created 2011 by Felipe Nogaroto Gonzalez <felipeng84 @ gmail . com>
-
-This code is in the public domain.
 License: MIT
-Code: http://github.com/felipeng/cafofo-hightech
+This code is part of project: http://github.com/felipeng/cafofo-hightech
+
+created 2014 by Felipe Nogaroto Gonzalez - felipeng84 @ gmail . com
 
 Reserved pins for EthernetShield
 Arduino Uno: 4, 10, 11, 12 and 13
 Ardino Mega: 4, 10, 50, 51 and 52
 
 */
+
 #include <SPI.h>
 #include <Ethernet.h>
 #include <SD.h>
-#include <OneWire.h>    // Temperadure sensor (DS18B20)
+//#include <OneWire.h>    // Temperadure sensor (DS18B20)
 
 //IPAddress ip(192,168,0,1);
 IPAddress ip(192,168,69,252);
 EthernetServer server(80);
 
-// Pins
-//int lamp_pins[] = {0, 1, 2, 5, 6, 7, 8, 9};
-//int ledstrip_pins[] = {3};
-//int temp_pins[] = {2};
-//byte temp1[8] = {0x28, 0xFD, 0xB5, 0xC9, 0x05, 0x00, 0x00, 0x24 };
+// Arduino UNO
+int lamp_pins[] = {0, 1, 2, 6, 7, 8, 9};
+int ledstrip_pins[] = {3, 5};
+// int temp_pins[] = {2};
+// byte temp1[8] = {0x28, 0xFD, 0xB5, 0xC9, 0x05, 0x00, 0x00, 0x24 };
 
-int lamp_pins[] = {31, 32, 33, 34 ,35, 36, 41};
-int ledstrip_pins[] = {5, 6, 7};
-int temp_pin = 30;
-byte temp_sensor1[8] = {0x28, 0xFD, 0xB5, 0xC9, 0x05, 0x00, 0x00, 0x24};
-byte temp_sensor2[8] = {0x28, 0x33, 0x7F, 0x8E, 0x05, 0x00, 0x00, 0x51};
-byte* temp_address[2] = {temp_sensor1, temp_sensor2};
+// Arduino Mega
+// int lamp_pins[] = {31, 32, 33, 34 ,35, 36, 41};
+// int ledstrip_pins[] = {5, 6, 7};
+// int temp_pin = 30;
+// byte temp_sensor1[8] = {0x28, 0xFD, 0xB5, 0xC9, 0x05, 0x00, 0x00, 0x24};
+// byte temp_sensor2[8] = {0x28, 0x33, 0x7F, 0x8E, 0x05, 0x00, 0x00, 0x51};
+// byte* temp_address[2] = {temp_sensor1, temp_sensor2};
 
 void setup() {
-//  // Pins: 4, 10, 11, 12, 13 are reserved for Arduino Uno
-//  pinMode(0, OUTPUT);
-//  pinMode(1, OUTPUT);
-//  pinMode(2, OUTPUT);
-//  pinMode(3, OUTPUT);
-//  SD.begin(4);
-//  pinMode(5, OUTPUT);
-//  pinMode(6, OUTPUT);
-//  pinMode(7, OUTPUT);
-//  pinMode(8, OUTPUT);
-//  pinMode(9, OUTPUT);
+ // Arduino UNO: 4, 10, 11, 12 and 13 are reserved
+ pinMode(0, OUTPUT);
+ pinMode(1, OUTPUT);
+ pinMode(2, OUTPUT);
+ pinMode(3, OUTPUT);
+ SD.begin(4);
+ pinMode(5, OUTPUT);
+ pinMode(6, OUTPUT);
+ pinMode(7, OUTPUT);
+ pinMode(8, OUTPUT);
+ pinMode(9, OUTPUT);
 
-  // Pins: 4, 10, 11, 12, 13 are reserved for Arduino Uno
-  pinMode(5, OUTPUT);
-  pinMode(6, OUTPUT);
-  pinMode(7, OUTPUT);
-  pinMode(30, OUTPUT);
-  pinMode(31, OUTPUT);
-  pinMode(32, OUTPUT);
-  pinMode(33, OUTPUT);
-  pinMode(34, OUTPUT);
-  SD.begin(4);
-  pinMode(35, OUTPUT);
-  pinMode(36, OUTPUT);
-  pinMode(37, OUTPUT);
-  pinMode(41, OUTPUT);
-  pinMode(38, OUTPUT);
-  pinMode(39, OUTPUT);
-  pinMode(40, OUTPUT);
+  // Arduino Mega 2560: 4, 10, 50, 51 and 52 are reserved
+  // SD.begin(4);
+  // pinMode(5, OUTPUT);
+  // pinMode(6, OUTPUT);
+  // pinMode(7, OUTPUT);
+  // pinMode(30, OUTPUT);
+  // pinMode(31, OUTPUT);
+  // pinMode(32, OUTPUT);
+  // pinMode(33, OUTPUT);
+  // pinMode(34, OUTPUT);
+  // pinMode(35, OUTPUT);
+  // pinMode(36, OUTPUT);
+  // pinMode(37, OUTPUT);
+  // pinMode(41, OUTPUT);
+  // pinMode(38, OUTPUT);
+  // pinMode(39, OUTPUT);
+  // pinMode(40, OUTPUT);
 
-  // Ethernet - Reserved Pins
+  // Ethernet Shield - Reserved Pins
   pinMode(10, OUTPUT);
   digitalWrite(10, HIGH);
   byte mac[] = { 0xDE, 0xAD, 0xBE, 0xEF, 0xFE, 0xED };
@@ -76,11 +76,12 @@ void setup() {
 }
 
 void loop() {
-  // Clean the value os request
+  // Clean the value on each request
   char arg1[15] = "";
   char arg2[15]= "";
   int arg3;
   int arg4;
+
   EthernetClient client = server.available();
   if (client) {
     while (client.connected()) {
@@ -198,6 +199,7 @@ void HTTP_reply_xml(EthernetClient client) {
     client.print(ledstrip_pins[i]);
     client.println(">");
   }
+
   // Lamp
   for (int i=0; i < sizeof(lamp_pins)/2; i++){
     client.print("<lamp_");

@@ -21,6 +21,11 @@ Abrir o sketch no Arduino e ajustar os valores abaixo e carregar para o Arduino:
 
 # Problemas Conhecidos e Limitações
 
+The SD card library does not support 'long filenames' such as we are used to. Instead, it uses the 8.3 format for file names, so keep file names short! For example IMAGE.JPG is fine, and datalog.txt is fine by "My GPS log file.text" is not! Also keep in mind that short file names do not have 'case' sensitivity, so datalog.txt is the same file as DataLog.Txt is the same file as DATALOG.TXT
+http://en.wikipedia.org/wiki/8.3_filename
+exten with 3 caracters
+8 caracter + . + htm
+
 * Limitação do FAT:
   * não utilizar pastas
   * não utilizar nome de arquivos com mais de 8 caracteres no total

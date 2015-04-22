@@ -11,12 +11,15 @@ C
 * se na URL nao passar parametro (/) deve abrir o index - http://en.wikipedia.org/wiki/URL_redirection#HTTP_status_codes_3xx
 
 HTML
+* trocar lamp = por algo relacionado a pino
 * fazer slider funcionar no FF
-* adicionar acao no botao de ambiente
+* adicionar acao no botao de ambiente (separar o arquivo)
 * aumentar o tamnho dos icones (stop, play, etc)
 * colocar icone de garagem
 * aquario e outras coisas
 * melhorar o arduino ambient, pode passar por parameto, quais é para apagar
+* Convert XML response to JSON
+
 
 JS
 * se colocar timeout 0, entra em loop muito rapido, descobrir como definir um valor para nao ter refresh
