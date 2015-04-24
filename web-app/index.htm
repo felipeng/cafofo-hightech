@@ -9,6 +9,7 @@
     <link href="ios.css" rel="stylesheet" media="screen" type="text/css" />
     <!-- iPhone end -->
     <script src="main.js"></script>
+    <script src="ambients.js"></script>
   </head>
   <body onload="GetStatus()">
     <div class="top">
@@ -32,7 +33,7 @@
         <img class="icon" src="i_garage.png">
         Door 1 (pin 1)
         <label class="switch action">
-            <input class="switch-input toggle" onChange="arduinoWrite(this)" type="checkbox" id="1">
+            <input class="switch-input pin" onChange="arduinoWrite(this)" type="checkbox" id="1">
             <span class="switch-label"></span>
         </label>
       </li>
@@ -40,18 +41,18 @@
     <h2>LIGHTING</h2>
     <ul>
       <li>
-          <img class="icon" src="i_light.png">
-          Lamp 1 (pin 2)
-          <label class="switch action">
-            <input class="switch-input toggle" onChange="arduinoWrite(this)" type="checkbox" id="2">
-            <span class="switch-label"></span>
-          </label>
+        <img class="icon" src="i_light.png">
+        Lamp 1 (pin 2)
+        <label class="switch action">
+          <input class="switch-input pin" onChange="arduinoWrite(this)" type="checkbox" id="2">
+          <span class="switch-label"></span>
+        </label>
       </li>
       <li>
         <img class="icon" src="i_light.png">
         Lamp 2 (pin 6)
         <label class="switch action">
-          <input class="switch-input toggle" onChange="arduinoWrite(this)" type="checkbox" id="6">
+          <input class="switch-input pin" onChange="arduinoWrite(this)" type="checkbox" id="6">
           <span class="switch-label"></span>
         </label>
       </li>
@@ -59,7 +60,7 @@
         <img class="icon" src="i_light.png">
         Lamp 3 (pin 7)
         <label class="switch action">
-          <input class="switch-input toggle" onChange="arduinoWrite(this)" type="checkbox" id="7">
+          <input class="switch-input pin" onChange="arduinoWrite(this)" type="checkbox" id="7">
           <span class="switch-label"></span>
         </label>
       </li>
@@ -67,7 +68,7 @@
         <img class="icon" src="i_light.png">
         Lamp 4 (pin 8)
         <label class="switch action">
-          <input class="switch-input toggle" onChange="arduinoWrite(this)" type="checkbox" id="8">
+          <input class="switch-input pin" onChange="arduinoWrite(this)" type="checkbox" id="8">
           <span class="switch-label"></span>
         </label>
       </li>
@@ -75,7 +76,7 @@
         <img class="icon" src="i_light.png">
         Lamp 5 (pin 9)
         <label class="switch action">
-          <input class="switch-input toggle" onChange="arduinoWrite(this)" type="checkbox" id="9">
+          <input class="switch-input pin" onChange="arduinoWrite(this)" type="checkbox" id="9">
           <span class="switch-label"></span>
         </label>
       </li>
@@ -83,15 +84,15 @@
     <h2>LED STRIP</h2>
     <ul>
       <li>
-        Led Strip 1 (pin 3)
+        Strip (pin 3)
         <img class="range_big action" src="i_range.png">
-        <input class="ledstrip action" value="0" type="range" min="0" max="250" step="50" value="0" onchange="arduinoWrite(this)" oninput="slider_color(this)" id="3">
+        <input class="pwm action" value="0" type="range" min="0" max="250" step="50" onchange="arduinoWrite(this)" oninput="slider_color(this)" id="3">
         <img class="range_small action" src="i_range.png">
       </li>
       <li>
-        Led Strip 2 (pin 5)
+        Strip (pin 5)
         <img class="range_big action" src="i_range.png">
-        <input class="ledstrip action" value="0" type="range" min="0" max="250" step="50" value="0" onchange="arduinoWrite(this)" oninput="slider_color(this)" id="5">
+        <input class="pwm action" value="0" type="range" min="0" max="250" step="50" onchange="arduinoWrite(this)" oninput="slider_color(this)" id="5">
         <img class="range_small action" src="i_range.png">
       </li>
     </ul>

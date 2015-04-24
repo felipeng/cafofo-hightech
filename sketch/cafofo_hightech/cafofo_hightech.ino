@@ -23,13 +23,13 @@ IPAddress ip(192,168,69,252);
 EthernetServer server(80);
 
 // Arduino UNO
-int lamp_pins[] = {0, 1, 2, 6, 7, 8, 9};
-int ledstrip_pins[] = {3, 5};
+int pins[] = {1, 2, 6, 7, 8, 9};
+int pwm_pins[] = {3, 5};
 // int temp_pins[] = {2};
 // byte temp1[8] = {0x28, 0xFD, 0xB5, 0xC9, 0x05, 0x00, 0x00, 0x24 };
 
 // Arduino Mega
-// int lamp_pins[] = {31, 32, 33, 34 ,35, 36, 41};
+// int pins[] = {31, 32, 33, 34 ,35, 36, 41};
 // int ledstrip_pins[] = {5, 6, 7};
 // int temp_pin = 30;
 // byte temp_sensor1[8] = {0x28, 0xFD, 0xB5, 0xC9, 0x05, 0x00, 0x00, 0x24};
@@ -76,12 +76,13 @@ void setup() {
 }
 
 void loop() {
-  // Clean the value on each request
+  // Clean the values on each request
   char arg1[15] = "";
   char arg2[15]= "";
   int arg3;
   int arg4;
 
+  // Recives the request and parses into variables
   EthernetClient client = server.available();
   if (client) {
     while (client.connected()) {
@@ -171,58 +172,56 @@ void HTTP_reply_xml(EthernetClient client) {
   client.println();
   client.print("<?xml version = \"1.0\" ?>");
   client.println("<arduino>");
-  // Temperature
-//  for (int i=0; i < sizeof(temp_address)/2; i++){
-    client.print("<temp_");
-    client.print(30);
-    client.print(">");
-    client.print(getTemperature(30, temp_sensor1));
-    client.print("</temp_");
-    client.print(30);
-    client.println(">");
+//  client.print("<temp_");
+//  client.print(30);
+//  client.print(">");
+//  client.print(getTemperature(30, temp_sensor1));
+//  client.print("</temp_");
+//  client.print(30);
+//  client.println(">");
 
-    client.print("<temp_");
-    client.print(40);
-    client.print(">");
-    client.print(getTemperature(40, temp_sensor2));
-    client.print("</temp_");
-    client.print(40);
-    client.println(">");
+//    client.print("<temp_");
+//    client.print(40);
+//    client.print(">");
+//    client.print(getTemperature(40, temp_sensor2));
+//    client.print("</temp_");
+//    client.print(40);
+//    client.println(">");
 
-  // Led Strip
-  for (int i=0; i < sizeof(ledstrip_pins)/2; i++){
-    client.print("<ledstrip_");
-    client.print(ledstrip_pins[i]);
+  // PWM (Led Strip)
+  for (int i=0; i < sizeof(pwm_pins)/2; i++){
+    client.print("<pwm_");
+    client.print(pwm_pins[i]);
     client.print(">");
     client.print(0);
-    client.print("</ledstrip_");
-    client.print(ledstrip_pins[i]);
+    client.print("</pwm_");
+    client.print(pwm_pins[i]);
     client.println(">");
   }
 
-  // Lamp
-  for (int i=0; i < sizeof(lamp_pins)/2; i++){
-    client.print("<lamp_");
-    client.print(lamp_pins[i]);
+  // Pins (Lamp)
+  for (int i=0; i < sizeof(pins)/2; i++){
+    client.print("<pin_");
+    client.print(pins[i]);
     client.print(">");
-    client.print(digitalRead(lamp_pins[i]));
-    client.print("</lamp_");
-    client.print(lamp_pins[i]);
+    client.print(digitalRead(pins[i]));
+    client.print("</pin_");
+    client.print(pins[i]);
     client.println(">");
   }
   client.println("</arduino>");
 }
 
 // Get temperadure using OneWire Library with DS18B20 sensor
-int getTemperature(int pin, byte dsAddress[8]){
-  OneWire ds(pin);
-  ds.reset();
-  ds.select(dsAddress);
-  ds.write(0x44,1);
-  ds.reset();
-  ds.select(dsAddress);
-  ds.write(0xBE);
-  int dsData = ds.read();
-  float temp = (256 | dsData);
-  return temp;
-}
+//int getTemperature(int pin, byte dsAddress[8]){
+//  OneWire ds(pin);
+//  ds.reset();
+//  ds.select(dsAddress);
+//  ds.write(0x44,1);
+//  ds.reset();
+//  ds.select(dsAddress);
+//  ds.write(0xBE);
+//  int dsData = ds.read();
+//  float temp = (256 | dsData);
+//  return temp;
+//}

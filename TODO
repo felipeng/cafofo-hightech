@@ -1,11 +1,11 @@
 TODO
 ====
-* documentar funcoes
+
 * da pra usar porta analogica?
-* explicar como pegar o enderço do OneWire
 * Remover do padrão o OneWire?
 
 C
+* documentar funcoes
 * pensar melhor nas variaves do sensor de temperadura
 * salvar o valor da fita ler e retornar no xml
 * se na URL nao passar parametro (/) deve abrir o index - http://en.wikipedia.org/wiki/URL_redirection#HTTP_status_codes_3xx
@@ -19,7 +19,12 @@ HTML
 * aquario e outras coisas
 * melhorar o arduino ambient, pode passar por parameto, quais é para apagar
 * Convert XML response to JSON
+* ver se tem como tirar o style do ranger color do javascript e passar para o CSS
 
 
 JS
 * se colocar timeout 0, entra em loop muito rapido, descobrir como definir um valor para nao ter refresh
+
+
+Testar
+*  ambient
