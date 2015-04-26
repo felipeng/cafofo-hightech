@@ -4,24 +4,24 @@
 
 1. Open the sketch in the Arduino IDE
 2. Adjust the values below
-* IP address: `IPAddress ip(192,168,0,1);`
-* Fill the pins array: `int pins[] = {0, 1, 2, 5, 6, 7, 8, 9};`
-* Fill the PWM pins array: `int pwm_pins[] = {3};`
+  * IP address: `IPAddress ip(192,168,0,1);`
+  * Fill the pins array: `int pins[] = {0, 1, 2, 5, 6, 7, 8, 9};`
+  * Fill the PWM pins array: `int pwm_pins[] = {3};`
 3. Loads to the Arduino board
 
 ## Web App
 
 1. Format SD card with file system FAT16
-2. Open the JavaScript file (main.js) and adjusts the variable: arduinoIP
-3. Copy all files of the web-app directory to the SD card
+2. Open the JavaScript file (main.js) and adjusts the variable: `arduinoIP`
+3. Copy all files of the `web-app` directory to the SD card
 4. Insert the SD card on the SD slot of the Ethernet Shield
 5. Access the URL through the browser: http://ARDUINO_IP/index.htm
 
 ## Coding, some tips for you...
 
 * Enable debug on main.js and use console on browser
-* Use static status.xml file for web development and change the arduinoIP
-variable on main.js
+* Create the `status.xml` static file for web development and change the
+`arduinoIP` variable on main.js to localhost.
 
 # Know Issue and Limitations
 
@@ -29,16 +29,16 @@ variable on main.js
   * Arduino Uno: 4, 10, 11, 12 and 13
   * Ardino Mega 2650: 4, 10, 50, 51 and 52
 
-2. SD card and file names, the file system FAT16 and the SD card library does not
+2. File names on SD card, the file system FAT16 and the SD card library does not
 support 'long filenames'. It uses the 8.3 format for file names, so keep file
-names short and don't use any special caracters, follow this simples rules:
-* extensions must have 3 caracters (.html is not valid)
-* filename without extensions can have til 8 caracters
-* do not split files into folders (yes it's sucks)
+names short and don't use any special characters, follow this simples rules:
+  * extensions must have 3 caracters (.html is not valid)
+  * filename without extensions can have til 8 caracters
+  * do not split files into folders (yes it's sucks)
 
 In resume, use filenames like this: image.jpg, test.htm (don't use .html)
 
-More information: http://en.wikipedia.org/wiki/8.3_filename
+More information about 8.3 file names: http://en.wikipedia.org/wiki/8.3_filename
 
 3. Auto Refresh (main.js), the variable 'refresh', can not be 0
 
