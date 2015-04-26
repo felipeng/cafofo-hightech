@@ -31,16 +31,13 @@
 
 2. File names on SD card, the file system FAT16 and the SD card library does not
 support 'long filenames'. It uses the 8.3 format for file names, so keep file
-names short and don't use any special characters, follow this simples rules:
-  * extensions must have 3 caracters (.html is not valid)
-  * filename without extensions can have til 8 caracters
+names short and don't use any special characters, more information about 8.3
+file names: http://en.wikipedia.org/wiki/8.3_filename, follow this simples rules:
+  * extension must have 3 characters (.html is not valid)
+  * file name (without extensions) can have till 8 characters
   * do not split files into folders (yes it's sucks)
+  * in resume, use file names like this: image.jpg, test.htm (don't use .html)
 
-In resume, use filenames like this: image.jpg, test.htm (don't use .html)
+3. Auto refresh, the variable 'refresh' under main.js, can not be `0`
 
-More information about 8.3 file names: http://en.wikipedia.org/wiki/8.3_filename
-
-3. Auto Refresh (main.js), the variable 'refresh', can not be 0
-
-4. When load the sketch to the Arduino, do not connect any jumper on digital pin
-0 and 1 when you are loading to Arduino.
+4. Do not connect any jumper on digital pin 0 and 1 when you are loading to Arduino.
