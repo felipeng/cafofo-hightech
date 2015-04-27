@@ -67,7 +67,8 @@ void loop() {
       if (client.available()) {
           String HTTP_request = client.readStringUntil('\n');
           if ((HTTP_request.startsWith("GET ")) && (HTTP_request.endsWith("\r"))) {
-            sscanf(HTTP_request.c_str(), "GET /%99[^&/ ]/%99[^/]/%99d/%99d", arg1, arg2, &arg3, &arg4);
+//            sscanf(HTTP_request.c_str(), "GET /%99[^&/ ]/%99[^/]/%99d/%99d", arg1, arg2, &arg3, &arg4);
+            sscanf(HTTP_request.c_str(), "GET /%15[^&/ ]/%15[^/]/%2d/%4d", arg1, arg2, &arg3, &arg4);
             HTTP_switch(client, arg1, arg2, arg3, arg4);
             delay(1);
             client.stop();
@@ -83,6 +84,8 @@ void loop() {
 void HTTP_switch(EthernetClient client, char arg1[20], char oper[20], int pin, int value){
   if (strcmp(arg1, "status.xml") == 0) {
      HTTP_reply_xml(client);
+  } else if (strcmp(arg1, "") == 0) {
+     HTTP_reply_file(client, "index.htm");
   } else if (strcmp(arg1, "arduino") == 0) {
       if (strcmp(oper, "digitalWrite") == 0) {
         if (value == 0 || value == 1) {
@@ -123,6 +126,7 @@ void HTTP_reply(EthernetClient client, int value) {
 // HTTP reply if the request is not valid
 void HTTP_reply_invalid(EthernetClient client){
   client.println("HTTP/1.1 406 Not Acceptable");
+  client.println("Access-Control-Allow-Origin: *");
   client.println("Content-Type: text/plain");
   client.println("Connection: close");
   client.println();

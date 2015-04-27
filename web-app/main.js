@@ -11,7 +11,7 @@ created 2014 by Felipe Nogaroto Gonzalez - felipeng84 @ gmail . com
 
 // Configurations
 arduinoIP = 'http://192.168.0.1/'; // IP address configured on Arduino
-refresh = 1000;	                   // in miliseconds
+refresh = 10000;	                   // in miliseconds
 debug = 1;                         // browser console
 ajax_cache = 0;	                   // recommended to use without AJAX cache, 0
 
@@ -59,13 +59,13 @@ function GetStatus() {
 // Assembles the request (digitalWrite/analogWrite, pin and value)
 function arduinoWrite(elem){
   if (elem.classList.contains('pin')){
-    oper = 'arduino/digitalWrite';
+    oper = 'digitalWrite/';
     value = (elem.checked?1:0);
   } else if (elem.classList.contains('pwm')) {
-    oper = 'arduino/analogWrite';
+    oper = 'analogWrite/';
     value = elem.value;
   }
-  ArduinoRequest(oper + '/' + elem.id + '/' + value);
+  ArduinoRequest('arduino/' + oper + elem.id + '/' + value);
 }
 
 // Send the request to the Arduino
@@ -76,12 +76,14 @@ function ArduinoRequest(URI){
 	   nocache = '';
   }
   URI = arduinoIP + URI + nocache;
-  request.open('GET', URI, true);
-  request.send(null);
 
   if (debug == 1) {
 	   console.log('GET', URI);
   }
+
+  request.open('GET', URI, true);
+  request.send(null);
+
 }
 
 // Update the color before thumb of input.range elements

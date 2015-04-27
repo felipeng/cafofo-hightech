@@ -40,12 +40,12 @@ GetStatus is a loop, by default is executed every 1 second
 
 ### API REST
 
-* http://ARDUINO_IP/status.xml                 = requests the state of sensor/pin
-* http://ARDUINO_IP/file                       = request a file stored on SD card
-* http://ARDUINO_IP:/arduino/digitalRead/5/0   = digitalRead(5)
-* http://ARDUINO_IP:/arduino/digitalRead/5/0   = analogRead(5)
-* http://ARDUINO_IP:/arduino/digitalWrite/5/1  = digitalWrite(5, HIGH)
-* http://ARDUINO_IP:/arduino/analogWrite/5/250 = analogWrite(5, 250)
+* http://ARDUINO_IP/status.xml                = requests the state of sensor/pin
+* http://ARDUINO_IP/file                      = request a file stored on SD card
+* http://ARDUINO_IP/arduino/digitalRead/5/0   = digitalRead(5)
+* http://ARDUINO_IP/arduino/digitalRead/5/0   = analogRead(5)
+* http://ARDUINO_IP/arduino/digitalWrite/5/1  = digitalWrite(5, HIGH)
+* http://ARDUINO_IP/arduino/analogWrite/5/250 = analogWrite(5, 250)
 
 ## Instalation
 
