@@ -27,10 +27,10 @@ function arduinoAmbient(elem){
     case 'sex':
         alert(elem.id);
   	    break;
-    case 'game':
+    case 'games':
         alert(elem.id);
   	    break;
-    case 'allon':
+    case 'all_on':
         ArduinoRequest('arduino/digitalWrite/2/1');
         ArduinoRequest('arduino/digitalWrite/6/1');
         ArduinoRequest('arduino/digitalWrite/7/1');
@@ -39,7 +39,7 @@ function arduinoAmbient(elem){
         ArduinoRequest('arduino/analogWrite/3/250');
         ArduinoRequest('arduino/analogWrite/5/250');
   	    break;
-    case 'alloff':
+    case 'all_off':
         ArduinoRequest('arduino/digitalWrite/2/0');
         ArduinoRequest('arduino/digitalWrite/6/0');
         ArduinoRequest('arduino/digitalWrite/7/0');

@@ -23,17 +23,17 @@
     <ul>
         <li>
             <img class="icon" src="i_temp.png">
-            Room (pin 0)
-            <div class="temp action" id="0"></div>
+            Room (pin 9)
+            <div class="temp action" id="9"></div>
         </li>
     </ul>
     <h2>DOOR</h2>
     <ul>
       <li>
         <img class="icon" src="i_garage.png">
-        Door 1 (pin 1)
+        Garage (pin 0)
         <label class="switch action">
-            <input class="switch-input pin" onChange="arduinoWrite(this)" type="checkbox" id="1">
+            <input class="switch-input pin" onChange="arduinoWrite(this)" type="checkbox" id="0">
             <span class="switch-label"></span>
         </label>
       </li>
@@ -42,7 +42,15 @@
     <ul>
       <li>
         <img class="icon" src="i_light.png">
-        Lamp 1 (pin 2)
+        Lamp 1 (pin 1)
+        <label class="switch action">
+          <input class="switch-input pin" onChange="arduinoWrite(this)" type="checkbox" id="1">
+          <span class="switch-label"></span>
+        </label>
+      </li>
+      <li>
+        <img class="icon" src="i_light.png">
+        Lamp 2 (pin 2)
         <label class="switch action">
           <input class="switch-input pin" onChange="arduinoWrite(this)" type="checkbox" id="2">
           <span class="switch-label"></span>
@@ -50,7 +58,7 @@
       </li>
       <li>
         <img class="icon" src="i_light.png">
-        Lamp 2 (pin 6)
+        Lamp 3 (pin 6)
         <label class="switch action">
           <input class="switch-input pin" onChange="arduinoWrite(this)" type="checkbox" id="6">
           <span class="switch-label"></span>
@@ -58,7 +66,7 @@
       </li>
       <li>
         <img class="icon" src="i_light.png">
-        Lamp 3 (pin 7)
+        Lamp 4 (pin 7)
         <label class="switch action">
           <input class="switch-input pin" onChange="arduinoWrite(this)" type="checkbox" id="7">
           <span class="switch-label"></span>
@@ -66,17 +74,9 @@
       </li>
       <li>
         <img class="icon" src="i_light.png">
-        Lamp 4 (pin 8)
+        Lamp 5 (pin 8)
         <label class="switch action">
           <input class="switch-input pin" onChange="arduinoWrite(this)" type="checkbox" id="8">
-          <span class="switch-label"></span>
-        </label>
-      </li>
-      <li>
-        <img class="icon" src="i_light.png">
-        Lamp 5 (pin 9)
-        <label class="switch action">
-          <input class="switch-input pin" onChange="arduinoWrite(this)" type="checkbox" id="9">
           <span class="switch-label"></span>
         </label>
       </li>
@@ -111,17 +111,17 @@
       <li>
         <img class="icon" src="i_game.png">
         Video Game
-        <img onclick="arduinoAmbient(this)" class="action icon" src="i_play.png" id="game">
+        <img onclick="arduinoAmbient(this)" class="action icon" src="i_play.png" id="games">
       </li>
       <li>
         <img class="icon" src="i_allon.png">
         All On
-         <img onclick="arduinoAmbient(this)" class="action icon" src="i_play.png" id="allon">
+         <img onclick="arduinoAmbient(this)" class="action icon" src="i_play.png" id="all_on">
       </li>
       <li>
         <img class="icon" src="i_alloff.png">
         All Off
-        <img onclick="arduinoAmbient(this)" class="action icon" src="i_play.png" id="alloff">
+        <img onclick="arduinoAmbient(this)" class="action icon" src="i_play.png" id="all_off">
       </li>
     </ul>
   </body>

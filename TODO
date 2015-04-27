@@ -1,24 +1,27 @@
-TODO
-====
+TODO v0.1
+=========
 
+Sketch
 * da pra usar porta analogica?
 * Remover do padrão o OneWire?
-Tell about html class and status.xml :)
-
-C
-* documentar funcoes
-* pensar melhor nas variaves do sensor de temperadura
+* Colocar padrão DHT11
 * salvar o valor da fita ler e retornar no xml
 * se na URL nao passar parametro (/) deve abrir o index - http://en.wikipedia.org/wiki/URL_redirection#HTTP_status_codes_3xx
 
 HTML
 * fazer slider funcionar no FF
 * ver se tem como tirar o style do ranger color do javascript e passar para o CSS
-* Convert XML response to JSON
 
+Testar
+* ambient
+
+
+
+TODO v0.2
+=========
 
 JS
 * se colocar timeout 0, entra em loop muito rapido, descobrir como definir um valor para nao ter refresh
 
-Testar
-*  ambient
+HTML
+* Convert XML response to JSON

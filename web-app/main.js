@@ -10,11 +10,10 @@ created 2014 by Felipe Nogaroto Gonzalez - felipeng84 @ gmail . com
 */
 
 // Configurations
-arduinoIP = '';	      // IP address configured on Arduino Ethernet Shield
-// arduinoIP = 'http://192.168.69.252/';
-refresh = 1000;	      // in miliseconds
-debug = 1;            // browser console
-ajax_cache = 1;	      // recommended to use without AJAX cache, 0
+arduinoIP = 'http://192.168.0.1/'; // IP address configured on Arduino
+refresh = 1000;	                   // in miliseconds
+debug = 1;                         // browser console
+ajax_cache = 0;	                   // recommended to use without AJAX cache, 0
 
 // Loop: requests the status.xml, parses the values and updates the HTML
 var request = new XMLHttpRequest();
@@ -29,7 +28,7 @@ function GetStatus() {
         var temps = document.getElementsByClassName('temp');
         for (var i=0;i<temps.length;i++){
           var temperature = xml.getElementsByTagName('temp_' + temps[i].id)[0].childNodes[0].nodeValue;
-          temps[i].innerHTML = (temperature / 16).toFixed(0) + ' °C';
+          temps[i].innerHTML = temperature + ' °C';
          }
 
         // Pins (Lamps)
@@ -43,11 +42,11 @@ function GetStatus() {
         }
 
         // PWM (Led Strips)
-        var pwms = document.getElementsByClassName('pwm');
-        for (var i=0;i<pwms.length;i++){
-          pwms[i].value = xml.getElementsByTagName('pwm_' + pwms[i].id)[0].childNodes[0].nodeValue;
-          slider_color(pwms[i]);
-        }
+        // var pwms = document.getElementsByClassName('pwm');
+        // for (var i=0;i<pwms.length;i++){
+        //   pwms[i].value = xml.getElementsByTagName('pwm_' + pwms[i].id)[0].childNodes[0].nodeValue;
+        //   slider_color(pwms[i]);
+        // }
       }
     }
   }
@@ -62,7 +61,7 @@ function arduinoWrite(elem){
   if (elem.classList.contains('pin')){
     oper = 'arduino/digitalWrite';
     value = (elem.checked?1:0);
-  } else if (elem.classList.contains('ledstrip')) {
+  } else if (elem.classList.contains('pwm')) {
     oper = 'arduino/analogWrite';
     value = elem.value;
   }

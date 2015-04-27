@@ -15,6 +15,8 @@ The theme is based on iOS 7, but can be easily modified. It was tested with
 Arduino Uno and Arduino Mega 2650, isn't a restriction, can be easily adapted to
 work with other boards like Raspberry Pi, BeagleBone, etc.
 
+The code was designed to be easy to add new sensors, is used the DHT11 sensor for temperature and humidity, you can use it with example.
+
 ## Components
 
 * Arduino

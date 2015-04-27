@@ -16,61 +16,39 @@ Ardino Mega: 4, 10, 50, 51 and 52
 #include <SPI.h>
 #include <Ethernet.h>
 #include <SD.h>
-//#include <OneWire.h>    // Temperadure sensor (DS18B20)
+#include "DHT11.h"  // Temperature (DHT11 sensor)
 
-//IPAddress ip(192,168,0,1);
-IPAddress ip(192,168,69,252);
+IPAddress ip(192,168,0,1);
+
+int pins[] = {0, 1, 2, 6, 7, 8};  // Digital pins
+int pwm_pins[] = {3, 5};          // Digital PWM pins
+DHT11 dht11sensor(9);             // Temperature (DHT11 sensor)
+
+// Size Of Arrays
+int sizeof_pins = sizeof(pins)/2;
+int sizeof_pwms = sizeof(pwm_pins)/2;
 EthernetServer server(80);
 
-// Arduino UNO
-int pins[] = {1, 2, 6, 7, 8, 9};
-int pwm_pins[] = {3, 5};
-// int temp_pins[] = {2};
-// byte temp1[8] = {0x28, 0xFD, 0xB5, 0xC9, 0x05, 0x00, 0x00, 0x24 };
-
-// Arduino Mega
-// int pins[] = {31, 32, 33, 34 ,35, 36, 41};
-// int ledstrip_pins[] = {5, 6, 7};
-// int temp_pin = 30;
-// byte temp_sensor1[8] = {0x28, 0xFD, 0xB5, 0xC9, 0x05, 0x00, 0x00, 0x24};
-// byte temp_sensor2[8] = {0x28, 0x33, 0x7F, 0x8E, 0x05, 0x00, 0x00, 0x51};
-// byte* temp_address[2] = {temp_sensor1, temp_sensor2};
-
 void setup() {
- // Arduino UNO: 4, 10, 11, 12 and 13 are reserved
- pinMode(0, OUTPUT);
- pinMode(1, OUTPUT);
- pinMode(2, OUTPUT);
- pinMode(3, OUTPUT);
- SD.begin(4);
- pinMode(5, OUTPUT);
- pinMode(6, OUTPUT);
- pinMode(7, OUTPUT);
- pinMode(8, OUTPUT);
- pinMode(9, OUTPUT);
+  // Temperature (DHT11 sensor)
+  dht11sensor.Initialize();
 
-  // Arduino Mega 2560: 4, 10, 50, 51 and 52 are reserved
-  // SD.begin(4);
-  // pinMode(5, OUTPUT);
-  // pinMode(6, OUTPUT);
-  // pinMode(7, OUTPUT);
-  // pinMode(30, OUTPUT);
-  // pinMode(31, OUTPUT);
-  // pinMode(32, OUTPUT);
-  // pinMode(33, OUTPUT);
-  // pinMode(34, OUTPUT);
-  // pinMode(35, OUTPUT);
-  // pinMode(36, OUTPUT);
-  // pinMode(37, OUTPUT);
-  // pinMode(41, OUTPUT);
-  // pinMode(38, OUTPUT);
-  // pinMode(39, OUTPUT);
-  // pinMode(40, OUTPUT);
-
+  // Arduino UNO: 4, 10, 11, 12 and 13 are reserved
+  pinMode(0, OUTPUT);
+  pinMode(1, OUTPUT);
+  pinMode(2, OUTPUT);
+  pinMode(3, OUTPUT);
+  SD.begin(4);
+  pinMode(5, OUTPUT);
+  pinMode(6, OUTPUT);
+  pinMode(7, OUTPUT);
+  pinMode(8, OUTPUT);
+  pinMode(9, OUTPUT);
+  
   // Ethernet Shield - Reserved Pins
   pinMode(10, OUTPUT);
   digitalWrite(10, HIGH);
-  byte mac[] = { 0xDE, 0xAD, 0xBE, 0xEF, 0xFE, 0xED };
+  byte mac[8] = { 0xDE, 0xAD, 0xBE, 0xEF, 0xFE, 0xED };
   Ethernet.begin(mac, ip);
   server.begin();
 }
@@ -91,15 +69,17 @@ void loop() {
           if ((HTTP_request.startsWith("GET ")) && (HTTP_request.endsWith("\r"))) {
             sscanf(HTTP_request.c_str(), "GET /%99[^&/ ]/%99[^/]/%99d/%99d", arg1, arg2, &arg3, &arg4);
             HTTP_switch(client, arg1, arg2, arg3, arg4);
+            delay(1);
+            client.stop();
           }
       }
-      client.stop();
       delay(1);
+      client.stop();
     }
   }
 }
 
-// REST
+// REST API
 void HTTP_switch(EthernetClient client, char arg1[20], char oper[20], int pin, int value){
   if (strcmp(arg1, "status.xml") == 0) {
      HTTP_reply_xml(client);
@@ -113,9 +93,9 @@ void HTTP_switch(EthernetClient client, char arg1[20], char oper[20], int pin, i
         int pinValue = digitalRead(pin);
         HTTP_reply(client, pinValue);
       } else if (strcmp(oper, "analogWrite") == 0) {
-        if (value >= 0 || value <= 1023) {
+        if (value >= 0 || value <= 255) {
           analogWrite(pin, value);
-          //ledstrip_value = value;
+          int pwm_value_pin = value;
           HTTP_reply(client, value);
         }
       } else if (strcmp(oper, "analogRead") == 0) {
@@ -172,24 +152,13 @@ void HTTP_reply_xml(EthernetClient client) {
   client.println();
   client.print("<?xml version = \"1.0\" ?>");
   client.println("<arduino>");
-//  client.print("<temp_");
-//  client.print(30);
-//  client.print(">");
-//  client.print(getTemperature(30, temp_sensor1));
-//  client.print("</temp_");
-//  client.print(30);
-//  client.println(">");
-
-//    client.print("<temp_");
-//    client.print(40);
-//    client.print(">");
-//    client.print(getTemperature(40, temp_sensor2));
-//    client.print("</temp_");
-//    client.print(40);
-//    client.println(">");
+  // Temperature (DHT11 sensor)
+  client.print("<temp_9>");
+  client.print(getTemperature());
+  client.print("</temp_9>");
 
   // PWM (Led Strip)
-  for (int i=0; i < sizeof(pwm_pins)/2; i++){
+  for (int i=0; i < sizeof_pwms; i++){
     client.print("<pwm_");
     client.print(pwm_pins[i]);
     client.print(">");
@@ -200,7 +169,7 @@ void HTTP_reply_xml(EthernetClient client) {
   }
 
   // Pins (Lamp)
-  for (int i=0; i < sizeof(pins)/2; i++){
+  for (int i=0; i < sizeof_pins; i++){
     client.print("<pin_");
     client.print(pins[i]);
     client.print(">");
@@ -212,16 +181,13 @@ void HTTP_reply_xml(EthernetClient client) {
   client.println("</arduino>");
 }
 
-// Get temperadure using OneWire Library with DS18B20 sensor
-//int getTemperature(int pin, byte dsAddress[8]){
-//  OneWire ds(pin);
-//  ds.reset();
-//  ds.select(dsAddress);
-//  ds.write(0x44,1);
-//  ds.reset();
-//  ds.select(dsAddress);
-//  ds.write(0xBE);
-//  int dsData = ds.read();
-//  float temp = (256 | dsData);
-//  return temp;
-//}
+// Get temperature (DHT11 sensor)
+int getTemperature(){
+  double dht11sensorData[2];
+  int dht11_query = dht11sensor.Read(dht11sensorData);
+  if (dht11_query == 0){
+    return dht11sensorData[1];
+  } else {
+    return 0;
+  }
+}

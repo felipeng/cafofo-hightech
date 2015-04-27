@@ -12,16 +12,24 @@
 ## Web App
 
 1. Format SD card with file system FAT16
-2. Open the JavaScript file (main.js) and adjusts the variable: `arduinoIP`
-3. Copy all files of the `web-app` directory to the SD card
-4. Insert the SD card on the SD slot of the Ethernet Shield
-5. Access the URL through the browser: http://ARDUINO_IP/index.htm
+2. Copy all files of the `web-app` directory to the SD card
+3. Insert the SD card on the SD slot of the Ethernet Shield
+4. Access the URL through the browser: http://ARDUINO_IP/index.htm
+
+It's not obligatorily needed host the web-app files on the Arduino SD. In other
+words, you can just adjust the `arduinoIP` variable under main.js file, pointing
+to the arduino's IP.
 
 ## Coding, some tips for you...
 
 * Enable debug on main.js and use console on browser
-* Create the `status.xml` static file for web development and change the
-`arduinoIP` variable on main.js to localhost.
+* To simulate a Arduino, just create a static file called `status.xml` and set
+the `arduinoIP` variable in main.js pointing to the host where is the status.xml
+file.
+* Web development, normally you have to modify the file, copy to SD card, inserts
+on SD slot, restarts the Arduino and see the result. The easy/short way to doing
+it is host the web-app on some place and set the `arduinoIP` variable in main.js
+pointing to the Arduino, like (http://192.168.0.1/)
 
 # Know Issue and Limitations
 
