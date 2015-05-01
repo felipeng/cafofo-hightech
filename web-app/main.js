@@ -10,50 +10,54 @@ created 2014 by Felipe Nogaroto Gonzalez - felipeng84 @ gmail . com
 */
 
 // Configurations
-arduinoIP = 'http://192.168.0.1/'; // IP address configured on Arduino
-refresh = 10000;	                   // in miliseconds
+arduinoIP = '192.168.69.252';      // IP address configured on Arduino
+refresh = 1000;	                   // in miliseconds
 debug = 1;                         // browser console
 ajax_cache = 0;	                   // recommended to use without AJAX cache, 0
 
-// Loop: requests the status.xml, parses the values and updates the HTML
+// Requests the status.xml, parses the values and updates the HTML
 var request = new XMLHttpRequest();
 function GetStatus() {
-  request.onreadystatechange = function() {
-    if (this.readyState == 4 && this.status == 200) {
-      if (this.responseXML != null) {
-        // parses the XML values from status.xml
-        xml = this.responseXML;
+    request.onreadystatechange = function () {
+        if (this.readyState === 4 && this.status === 200) {
+            if (this.responseXML !== null) {
+                // parses the XML values from status.xml
+                xml = this.responseXML;
 
-        // Temperature
-        var temps = document.getElementsByClassName('temp');
-        for (var i=0;i<temps.length;i++){
-          var temperature = xml.getElementsByTagName('temp_' + temps[i].id)[0].childNodes[0].nodeValue;
-          temps[i].innerHTML = temperature + ' °C';
-         }
+                // Temperature
+                var temps = document.getElementsByClassName('temp');
+                for (var i=0;i<temps.length;i++){
+                  var temperature = xml.getElementsByTagName('temp_' + temps[i].id)[0].childNodes[0].nodeValue;
+                  //temps[i].innerHTML = temperature + ' °C';
+                  temps[i].innerHTML = (temperature / 16).toFixed(0) + ' °C';
+                 }
 
-        // Pins (Lamps)
-        var pins = document.getElementsByClassName('pin');
-        for (var i=0;i<pins.length;i++){
-          if (xml.getElementsByTagName('pin_' + pins[i].id)[0].childNodes[0].nodeValue == 1){
-            pins[i].setAttribute('checked', 'checked');
-          } else {
-            pins[i].removeAttribute('checked');
-          }
+                // Pins (Lamps)
+                var pins = document.getElementsByClassName('pin');
+                for (var i=0;i<pins.length;i++){
+                  if (xml.getElementsByTagName('pin_' + pins[i].id)[0].childNodes[0].nodeValue == 1){
+                    pins[i].setAttribute('checked', 'checked');
+                  } else {
+                    pins[i].removeAttribute('checked');
+                  }
+                }
+
+                // PWM (Led Strips)
+                // var pwms = document.getElementsByClassName('pwm');
+                // for (var i=0;i<pwms.length;i++){
+                //   pwms[i].value = xml.getElementsByTagName('pwm_' + pwms[i].id)[0].childNodes[0].nodeValue;
+                //   slider_color(pwms[i]);
+                // }
+            }
         }
-
-        // PWM (Led Strips)
-        // var pwms = document.getElementsByClassName('pwm');
-        // for (var i=0;i<pwms.length;i++){
-        //   pwms[i].value = xml.getElementsByTagName('pwm_' + pwms[i].id)[0].childNodes[0].nodeValue;
-        //   slider_color(pwms[i]);
-        // }
-      }
-    }
   }
 
   // Request the status.xml from Arduino
-  ArduinoRequest('status.xml');
-  setTimeout('GetStatus()', refresh);
+  URL = ArduinoRequest('status.xml', 0);
+  request.open('GET', URL, true); // Method, URL, async
+  request.send(null);             // Only used for POST
+
+  setTimeout('GetStatus()', refresh); // Do the loop request
 }
 
 // Assembles the request (digitalWrite/analogWrite, pin and value)
@@ -65,25 +69,33 @@ function arduinoWrite(elem){
     oper = 'analogWrite/';
     value = elem.value;
   }
-  ArduinoRequest('arduino/' + oper + elem.id + '/' + value);
+  ArduinoRequest('arduino/' + oper + elem.id + '/' + value, 1);
 }
 
 // Send the request to the Arduino
-function ArduinoRequest(URI){
+function ArduinoRequest(URL, new_request){
+  // Cache enabled?
   if (ajax_cache == 0 ){
-      nocache = '&nocache=' + Math.random() * 10000;
+    nocache = '&nocache=' + Math.random() * 10000;
   } else if (ajax_cache == 1) {
-	   nocache = '';
+	  nocache = '';
   }
-  URI = arduinoIP + URI + nocache;
 
+  // Assembles de URL
+  URL = 'http://' + arduinoIP + '/' + URL + nocache;
+
+  // Debug enabled?
   if (debug == 1) {
-	   console.log('GET', URI);
+	   console.log('Debug: GET', URL);
   }
 
-  request.open('GET', URI, true);
-  request.send(null);
-
+  if (new_request == 0){
+    return URL;
+  } else {
+    var request = new XMLHttpRequest();
+    request.open('GET', URL, true);
+    request.send(null);
+  }
 }
 
 // Update the color before thumb of input.range elements
@@ -95,6 +107,7 @@ function slider_color(elem) {
         'left top,',
         'right top,',
         'color-stop(' + value + ', #017afd),',
-        'color-stop(' + value + ', #a9acb1)',
+      //  'color-stop(' + value + ', #009688),',
+       'color-stop(' + value + ', #a9acb1)',
   ')'].join('');
 };

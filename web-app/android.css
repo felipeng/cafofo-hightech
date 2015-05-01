@@ -1,6 +1,6 @@
 /*
 
-Cafofo Hightech - iOS 7 - Theme
+Cafofo Hightech - Android 5 - Theme
 
 License: MIT
 This code is part of project: http://github.com/felipeng/cafofo-hightech
@@ -10,7 +10,6 @@ created 2014 by Felipe Nogaroto Gonzalez - felipeng84 @ gmail . com
 */
 
 body{
-    background-color: #E9E9E9;
     font-family: 'Helvetica Neue', Helvetica, Roboto, Arial, sans-serif;
     font-size: 12pt;
     -moz-osx-font-smoothing: grayscale;
@@ -18,13 +17,13 @@ body{
 
 a{
     text-decoration: none;
-    color: #4E8FF0;
+    color: #fff;
+    font-weight: bold;
 }
 
 ul{
     background-color: #FFFFFF;
-    border-top: #E1E1E1 solid 1px;
-    border-bottom: #E1E1E1 solid 2px;
+    border-bottom: #E1E1E1 solid 1px;
     padding: 0px;
     margin: 0px -8px 0px -8px;
     list-style: none;
@@ -35,7 +34,7 @@ li{
     padding-left: 10px;
     padding-right: 10px;
     color: #313131;
-    border-top: 1px solid #EDEDED;
+    border-bottom: 1px solid #EDEDED;
     height: 35px;
     line-height: 35px;
 }
@@ -48,14 +47,13 @@ h2{
     margin: 18px 0px 4px;
     line-height: 24px;
     font-size: 14px;
-    color: #7C7B83;
-    text-shadow: 0px 1px rgba(255, 255, 255, 0.2);
+    color: #008B7D;
     font: inherit;
-    font-size: 10pt;
+    font-size: 12pt;
 }
 
 .top{
-    background-color: #F6F6F6;
+    background-color: #263238;
     border-bottom: 2px solid #E1E1E1;
     margin: -10px -8px -9px -9px;
     padding: 10px 0px 5px 0px;
@@ -78,7 +76,7 @@ h2{
 .tab{
     float:left;
     font-size: 10pt;
-    border:1px solid #2087fc;
+    border:1px solid #FFFFFF;
     border-right-width:0
 }
 
@@ -86,17 +84,15 @@ h2{
     border-radius:4px 0 0 4px
 }
 
-.tab:last-child
-{
+.tab:last-child{
     border-right-width:1px;
     border-radius:0 4px 4px 0
 }
 
-.tab.active
-{
-    color:white;
-    background:#2087fc;
-    border-color:rgba(0,0,0,0.05);
+.tab.active{
+    color:#009688;
+    background: #FFFFFF;
+    border-color: #FFFFFF;
 }
 
 .icon{
@@ -105,7 +101,8 @@ h2{
 
 .action{
     float: right;
-    margin-top: 4px;
+    margin-top: 5px;
+    margin-right: 3px;
 }
 
 .pointer{
@@ -127,87 +124,83 @@ h2{
 
 .switch-label{
     display:block;
-    width:56px;
-    height:28px;
-    background:#fafafa;
+    width:40px;
+    height:12px;
+    background:#B2B2B2;
     border-radius:15px;
-    box-shadow:inset 0 0 0 1px #e5e5e5;
-    left:1px;
+    left:-1px;
+    padding:3px;
     cursor: pointer;
 }
 
 .switch-label:before{
-	content:'';
-	position:absolute;
-	top:1px;
-	bottom:1px;
-	left:inherit;
-	width:26px;
-	background:white;
-	border-radius:13px;
-	box-shadow:0 2px 5px rgba(0,0,0,0.2),0 0 2px rgba(0,0,0,0.2)
+  	content:'';
+  	position:absolute;
+  	top:-3px;
+  	bottom:1px;
+  	left:inherit;
+  	width:26px;
+    height:26px;
+  	background:#ECECEC;
+  	border-radius:50px;
+  	box-shadow:0px 2px 5px #CECECE;
 }
 
-.switch-input:checked+.switch-label{
-	background:#46ca5e;
-	box-shadow:none;
-	left:29px
+.switch-input:checked + .switch-label{
+    background:#B2DFDB;
+  	left:20px
 }
+
+.switch-input:checked + .switch-label:before{
+    background:#009284;
+    box-shadow:0px 3px 5px #C8C9C9;
+
+}
+
 
 /* SLIDER (input range) */
 .range_big{
-  margin-top: 1px;
-  width: 32px;
+    margin-top: 1px;
+    width: 32px;
 }
 
 .range_small{
-  margin-top: 8px;
-  width: 17px;
+    margin-top: 8px;
+    width: 17px;
 }
 
 input[type="range"]{
+    cursor: pointer;
     -webkit-appearance: none;
     -moz-apperance: none;
+    outline: none;
     width: 50%;
-    height: 2px;
+    height: 4px;
     padding: 0;
-    border-left: 0px solid #017afd;
-    border-right: 0px solid #a9acb1;
-    background: #024069;
-    border-radius: 20px;
     margin: 16px 5px 0px 5px;
     background-image: -webkit-gradient(
         linear,
         left top,
         right top,
-        color-stop(0, #017afd),
+        color-stop(0, #009688),
         color-stop(0, #a9acb1)
     );
-    outline: none;
 }
-
 
 input[type="range"]::-webkit-slider-thumb{
     -webkit-appearance:none;
-    -moz-apperance:none;
-    width:25px;
-    height:25px;
-    -webkit-border-radius:20px;
-    -moz-border-radius:20px;
-    -ms-border-radius:20px;
-    -o-border-radius:20px;
+    border: 0px;
+    width:15px;
+    height:15px;
     border-radius:20px;
-    background-image:-webkit-gradient(
-        linear,
-        left top,
-        left bottom,
-        color-stop(0, #fefefe),
-        color-stop(0.49, #d7d7d7),
-        color-stop(0.51, #d1d1d1),
-	color-stop(0, #c8c8c8)
-    );
-    background: white;
-    border: 1px solid white;
-    -webkit-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
+    background: #009688;
+}
+
+input[type="range"]::-moz-range-thumb{
+    -moz-apperance:none;
+    border: 0px;
+    width:15px;
+    height:15px;
+    border-radius:20px;
+    background: #009688;
 }

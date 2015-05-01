@@ -49,3 +49,5 @@ file names: http://en.wikipedia.org/wiki/8.3_filename, follow this simples rules
 3. Auto refresh, the variable 'refresh' under main.js, can not be `0`
 
 4. Do not connect any jumper on digital pin 0 and 1 when you are loading to Arduino.
+
+5. List of files are allowed to be stored on SD card: .htm, .png, .css, .js

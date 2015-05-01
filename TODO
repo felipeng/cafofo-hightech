@@ -7,12 +7,15 @@ Sketch
 
 HTML
 * fazer slider funcionar no FF
-* html nao abre no chrome
 * ver se tem como tirar o style do ranger color do javascript e passar para o CSS
 
 Testar
 * ambient
 * ver se tem como aumentar velocidade de leitura do SD
+* testar main.js e ios.css (content type)
+
+IMAGE
+* comparar o tempo de carregamento da pagina com base64/arquivo.png
 
 TODO v0.2
 =========

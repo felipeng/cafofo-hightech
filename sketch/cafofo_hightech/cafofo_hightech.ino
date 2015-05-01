@@ -114,6 +114,7 @@ void HTTP_switch(EthernetClient client, char arg1[20], char oper[20], int pin, i
 
 // HTTP reply with the value
 void HTTP_reply(EthernetClient client, int value) {
+  client.println();
   client.println("HTTP/1.1 200 OK");
   client.println("Access-Control-Allow-Origin: *");
   client.println("Access-Control-Allow-Methods: GET");
@@ -125,6 +126,7 @@ void HTTP_reply(EthernetClient client, int value) {
 
 // HTTP reply if the request is not valid
 void HTTP_reply_invalid(EthernetClient client){
+  client.println();
   client.println("HTTP/1.1 406 Not Acceptable");
   client.println("Access-Control-Allow-Origin: *");
   client.println("Content-Type: text/plain");
@@ -135,7 +137,14 @@ void HTTP_reply_invalid(EthernetClient client){
 
 // HTTP reply if the request is a valid file
 void HTTP_reply_file(EthernetClient client, char arg1[20]){
+  client.println();
   client.println("HTTP/1.1 200 OK");
+  char * ext = strrchr(arg1,'.');
+  if (strcmp(ext, ".htm") == 0) {
+    client.println("Content-Type: text/html");
+  } else if (strcmp(ext, ".png") == 0) {
+    client.println("Content-Type: image/png");
+  }
   client.println("Connection: close");
   client.println();
   File webFile = SD.open(arg1);
@@ -149,12 +158,13 @@ void HTTP_reply_file(EthernetClient client, char arg1[20]){
 
 // HTTP reply with the values in xml file
 void HTTP_reply_xml(EthernetClient client) {
+  client.println();
   client.println("HTTP/1.1 200 OK");
   client.println("Access-Control-Allow-Origin: *");
   client.println("Access-Control-Allow-Methods: GET");
   client.println("Connection: close");
   client.println();
-  client.print("<?xml version = \"1.0\" ?>");
+  client.println("<?xml version = \"1.0\" ?>");
   client.println("<arduino>");
   // Temperature (DHT11 sensor)
   client.print("<temp_9>");

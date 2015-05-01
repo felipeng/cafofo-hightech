@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html>
   <head>
     <meta http-equiv="Content-Type" content="text/html;charset=utf-8" >
@@ -7,6 +8,7 @@
     <meta content="minimum-scale=1.0, width=device-width, maximum-scale=0.6667, user-scalable=no" name="viewport" />
   	<link href="i_logo.png" rel="apple-touch-icon" />
     <link href="ios.css" rel="stylesheet" media="screen" type="text/css" />
+    <!-- <link href="android.css" rel="stylesheet" media="screen" type="text/css" /> -->
     <!-- iPhone end -->
     <script src="main.js"></script>
     <script src="ambients.js"></script>
@@ -19,15 +21,15 @@
         <a href="#" class="tab">Room 2</a>
       </nav>
     </div>
-    <h2>TEMPERATURE</h2>
+    <h2>Temperature</h2>
     <ul>
-        <li>
-            <img class="icon" src="i_temp.png">
-            Room (pin 9)
-            <div class="temp action" id="9"></div>
-        </li>
+      <li>
+        <img class="icon" src="i_temp.png">
+        Room (pin 9)
+        <div class="temp action" id="9"></div>
+      </li>
     </ul>
-    <h2>DOOR</h2>
+    <h2>Door</h2>
     <ul>
       <li>
         <img class="icon" src="i_garage.png">
@@ -38,7 +40,7 @@
         </label>
       </li>
     </ul>
-    <h2>LIGHTING</h2>
+    <h2>Lighting</h2>
     <ul>
       <li>
         <img class="icon" src="i_light.png">
@@ -81,7 +83,7 @@
         </label>
       </li>
     </ul>
-    <h2>LED STRIP</h2>
+    <h2>Led Strip</h2>
     <ul>
       <li>
         Strip (pin 3)
@@ -92,11 +94,11 @@
       <li>
         Strip (pin 5)
         <img class="range_big action" src="i_range.png">
-        <input class="pwm action" value="0" type="range" min="0" max="250" step="50" onchange="arduinoWrite(this)" oninput="slider_color(this)" id="5">
+        <input class="pwm action" value="100" type="range" min="0" max="250" step="50" onchange="arduinoWrite(this)" oninput="slider_color(this)" id="5">
         <img class="range_small action" src="i_range.png">
       </li>
     </ul>
-    <h2>AMBIENT</h2>
+    <h2>Ambient</h2>
     <ul>
       <li>
         <img class="icon" src="i_movie.png">
