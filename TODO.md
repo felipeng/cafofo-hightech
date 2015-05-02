@@ -1,6 +1,10 @@
 TODO v0.1
 =========
 
+Documentar
+* Salvar na tela inicial para ficar como aplicativo
+* Relação entre id e pino
+
 Sketch
 * da pra usar porta analogica?
 * salvar o valor da fita ler e retornar no xml
@@ -8,11 +12,6 @@ Sketch
 HTML
 * fazer slider funcionar no FF
 * ver se tem como tirar o style do ranger color do javascript e passar para o CSS
-
-Testar
-* ambient
-* ver se tem como aumentar velocidade de leitura do SD
-* testar main.js e ios.css (content type)
 
 IMAGE
 * comparar o tempo de carregamento da pagina com base64/arquivo.png
@@ -25,3 +24,6 @@ JS
 
 HTML
 * Convert XML response to JSON
+
+* remover referencias sobre arduino
+* criar server para o RPI

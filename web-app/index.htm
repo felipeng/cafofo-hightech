@@ -6,12 +6,12 @@
     <!-- iPhone start -->
     <meta content="yes" name="apple-mobile-web-app-capable" />
     <meta content="minimum-scale=1.0, width=device-width, maximum-scale=0.6667, user-scalable=no" name="viewport" />
-  	<link href="i_logo.png" rel="apple-touch-icon" />
+  	<link href="logo.png" rel="apple-touch-icon" />
     <link href="ios.css" rel="stylesheet" media="screen" type="text/css" />
     <!-- <link href="android.css" rel="stylesheet" media="screen" type="text/css" /> -->
     <!-- iPhone end -->
     <script src="main.js"></script>
-    <script src="ambients.js"></script>
+    <script src="ambient.js"></script>
   </head>
   <body onload="GetStatus()">
     <div class="top">
@@ -24,7 +24,7 @@
     <h2>Temperature</h2>
     <ul>
       <li>
-        <img class="icon" src="i_temp.png">
+        <img class="icon" src="temp.png">
         Room (pin 9)
         <div class="temp action" id="9"></div>
       </li>
@@ -32,7 +32,7 @@
     <h2>Door</h2>
     <ul>
       <li>
-        <img class="icon" src="i_garage.png">
+        <img class="icon" src="garage.png">
         Garage (pin 0)
         <label class="switch action">
             <input class="switch-input pin" onChange="arduinoWrite(this)" type="checkbox" id="0">
@@ -43,7 +43,7 @@
     <h2>Lighting</h2>
     <ul>
       <li>
-        <img class="icon" src="i_light.png">
+        <img class="icon" src="light.png">
         Lamp 1 (pin 1)
         <label class="switch action">
           <input class="switch-input pin" onChange="arduinoWrite(this)" type="checkbox" id="1">
@@ -51,7 +51,7 @@
         </label>
       </li>
       <li>
-        <img class="icon" src="i_light.png">
+        <img class="icon" src="light.png">
         Lamp 2 (pin 2)
         <label class="switch action">
           <input class="switch-input pin" onChange="arduinoWrite(this)" type="checkbox" id="2">
@@ -59,7 +59,7 @@
         </label>
       </li>
       <li>
-        <img class="icon" src="i_light.png">
+        <img class="icon" src="light.png">
         Lamp 3 (pin 6)
         <label class="switch action">
           <input class="switch-input pin" onChange="arduinoWrite(this)" type="checkbox" id="6">
@@ -67,7 +67,7 @@
         </label>
       </li>
       <li>
-        <img class="icon" src="i_light.png">
+        <img class="icon" src="light.png">
         Lamp 4 (pin 7)
         <label class="switch action">
           <input class="switch-input pin" onChange="arduinoWrite(this)" type="checkbox" id="7">
@@ -75,7 +75,7 @@
         </label>
       </li>
       <li>
-        <img class="icon" src="i_light.png">
+        <img class="icon" src="light.png">
         Lamp 5 (pin 8)
         <label class="switch action">
           <input class="switch-input pin" onChange="arduinoWrite(this)" type="checkbox" id="8">
@@ -87,43 +87,43 @@
     <ul>
       <li>
         Strip (pin 3)
-        <img class="range_big action" src="i_range.png">
+        <img class="range_big action" src="range.png">
         <input class="pwm action" value="0" type="range" min="0" max="250" step="50" onchange="arduinoWrite(this)" oninput="slider_color(this)" id="3">
-        <img class="range_small action" src="i_range.png">
+        <img class="range_small action" src="range.png">
       </li>
       <li>
         Strip (pin 5)
-        <img class="range_big action" src="i_range.png">
+        <img class="range_big action" src="range.png">
         <input class="pwm action" value="100" type="range" min="0" max="250" step="50" onchange="arduinoWrite(this)" oninput="slider_color(this)" id="5">
-        <img class="range_small action" src="i_range.png">
+        <img class="range_small action" src="range.png">
       </li>
     </ul>
     <h2>Ambient</h2>
     <ul>
       <li>
-        <img class="icon" src="i_movie.png">
+        <img class="icon" src="movie.png">
         Movie
-        <img onclick="arduinoAmbient(this)" class="action icon" src="i_play.png" id="movie">
+        <img onclick="arduinoAmbient(this)" class="action icon" src="play.png" id="movie">
       </li>
       <li>
-        <img class="icon" src="i_sex.png">
+        <img class="icon" src="sex.png">
         Romance
-        <img onclick="arduinoAmbient(this)" class="action icon" src="i_play.png" id="sex">
+        <img onclick="arduinoAmbient(this)" class="action icon" src="play.png" id="sex">
       </li>
       <li>
-        <img class="icon" src="i_game.png">
+        <img class="icon" src="game.png">
         Video Game
-        <img onclick="arduinoAmbient(this)" class="action icon" src="i_play.png" id="games">
+        <img onclick="arduinoAmbient(this)" class="action icon" src="play.png" id="games">
       </li>
       <li>
-        <img class="icon" src="i_allon.png">
+        <img class="icon" src="allon.png">
         All On
-         <img onclick="arduinoAmbient(this)" class="action icon" src="i_play.png" id="all_on">
+         <img onclick="arduinoAmbient(this)" class="action icon" src="play.png" id="all_on">
       </li>
       <li>
-        <img class="icon" src="i_alloff.png">
+        <img class="icon" src="alloff.png">
         All Off
-        <img onclick="arduinoAmbient(this)" class="action icon" src="i_play.png" id="all_off">
+        <img onclick="arduinoAmbient(this)" class="action icon" src="play.png" id="all_off">
       </li>
     </ul>
   </body>

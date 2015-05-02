@@ -48,10 +48,11 @@ h2{
     margin: 18px 0px 4px;
     line-height: 24px;
     font-size: 14px;
-    color: #7C7B83;
-    text-shadow: 0px 1px rgba(255, 255, 255, 0.2);
+    color: #7c7c7c;
+    text-shadow: 0px 1px rgba(255, 255, 255, 0.5);
     font: inherit;
     font-size: 10pt;
+    text-transform: uppercase;
 }
 
 .top{
@@ -78,7 +79,7 @@ h2{
 .tab{
     float:left;
     font-size: 10pt;
-    border:1px solid #2087fc;
+    border:1px solid #3586F9;
     border-right-width:0
 }
 
@@ -86,17 +87,14 @@ h2{
     border-radius:4px 0 0 4px
 }
 
-.tab:last-child
-{
+.tab:last-child{
     border-right-width:1px;
     border-radius:0 4px 4px 0
 }
 
-.tab.active
-{
+.tab.active{
     color:white;
-    background:#2087fc;
-    border-color:rgba(0,0,0,0.05);
+    background:#3586F9;
 }
 
 .icon{
@@ -106,13 +104,6 @@ h2{
 .action{
     float: right;
     margin-top: 4px;
-}
-
-.pointer{
-    cursor: pointer;
-    margin-top: 7px;
-    width: 17px;
-    margin-left: 3px;
 }
 
 /* SWITCH */
@@ -145,7 +136,7 @@ h2{
 	width:26px;
 	background:white;
 	border-radius:13px;
-	box-shadow:0 2px 5px rgba(0,0,0,0.2),0 0 2px rgba(0,0,0,0.2)
+	box-shadow:0 2px 5px #E5E5E5,0 0 2px #E5E5E5
 }
 
 .switch-input:checked+.switch-label{
@@ -166,6 +157,7 @@ h2{
 }
 
 input[type="range"]{
+    cursor: pointer;
     -webkit-appearance: none;
     -moz-apperance: none;
     width: 50%;
@@ -185,7 +177,6 @@ input[type="range"]{
     );
     outline: none;
 }
-
 
 input[type="range"]::-webkit-slider-thumb{
     -webkit-appearance:none;

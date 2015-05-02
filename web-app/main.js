@@ -10,10 +10,10 @@ created 2014 by Felipe Nogaroto Gonzalez - felipeng84 @ gmail . com
 */
 
 // Configurations
-arduinoIP = '192.168.69.252';      // IP address configured on Arduino
-refresh = 1000;	                   // in miliseconds
-debug = 1;                         // browser console
-ajax_cache = 0;	                   // recommended to use without AJAX cache, 0
+arduinoIP = '';                    // IP address configured on Arduino
+refresh = 100000;	                   // in miliseconds
+debug = 0;                         // browser console
+ajax_cache = 1;	                   // recommended to use without AJAX cache, 0
 
 // Requests the status.xml, parses the values and updates the HTML
 var request = new XMLHttpRequest();
@@ -82,7 +82,7 @@ function ArduinoRequest(URL, new_request){
   }
 
   // Assembles de URL
-  URL = 'http://' + arduinoIP + '/' + URL + nocache;
+  URL = arduinoIP + '/' + URL + nocache;
 
   // Debug enabled?
   if (debug == 1) {
@@ -106,8 +106,11 @@ function slider_color(elem) {
         'linear,',
         'left top,',
         'right top,',
-        'color-stop(' + value + ', #017afd),',
-      //  'color-stop(' + value + ', #009688),',
+      // Android
+        // 'color-stop(' + value + ', #017afd),',
+
+      // iOS
+      'color-stop(' + value + ', #009688),',
        'color-stop(' + value + ', #a9acb1)',
   ')'].join('');
 };

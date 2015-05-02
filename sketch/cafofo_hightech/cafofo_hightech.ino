@@ -117,7 +117,6 @@ void HTTP_reply(EthernetClient client, int value) {
   client.println();
   client.println("HTTP/1.1 200 OK");
   client.println("Access-Control-Allow-Origin: *");
-  client.println("Access-Control-Allow-Methods: GET");
   client.println("Content-Type: text/plain");
   client.println("Connection: close");
   client.println();
@@ -161,7 +160,6 @@ void HTTP_reply_xml(EthernetClient client) {
   client.println();
   client.println("HTTP/1.1 200 OK");
   client.println("Access-Control-Allow-Origin: *");
-  client.println("Access-Control-Allow-Methods: GET");
   client.println("Connection: close");
   client.println();
   client.println("<?xml version = \"1.0\" ?>");

@@ -105,13 +105,6 @@ h2{
     margin-right: 3px;
 }
 
-.pointer{
-    cursor: pointer;
-    margin-top: 7px;
-    width: 17px;
-    margin-left: 3px;
-}
-
 /* SWITCH */
 .switch{
     display:inline-block;
@@ -156,7 +149,6 @@ h2{
     box-shadow:0px 3px 5px #C8C9C9;
 
 }
-
 
 /* SLIDER (input range) */
 .range_big{
