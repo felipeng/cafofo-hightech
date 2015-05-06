@@ -28,8 +28,8 @@ function GetStatus() {
                 var temps = document.getElementsByClassName('temp');
                 for (var i=0;i<temps.length;i++){
                   var temperature = xml.getElementsByTagName('temp_' + temps[i].id)[0].childNodes[0].nodeValue;
-                  //temps[i].innerHTML = temperature + ' °C';
-                  temps[i].innerHTML = (temperature / 16).toFixed(0) + ' °C';
+                  temps[i].innerHTML = temperature + ' °C';
+                  // temps[i].innerHTML = (temperature / 16).toFixed(0) + ' °C';
                  }
 
                 // Pins (Lamps)

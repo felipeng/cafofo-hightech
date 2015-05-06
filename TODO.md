@@ -12,6 +12,11 @@ Sketch
 HTML
 * ver se tem como tirar o style do ranger color do javascript e passar para o CSS
 * fazer slider funcionar no FF
+* Ambient: fita led nao está funcionando corretamente
+
+C
+* primeira vez que liga o led do onewire fica acesso, até a primeira requisição.
+
 
 
 TODO v0.2
