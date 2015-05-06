@@ -6,15 +6,15 @@ personal project for home automation of an apartment, after much study and
 dedication, I decided to share the code as a free software, maybe can be useful
 for some people.
 
-It is developed in pure HTML5, CSS, JavaScript and C (Arduino Sketch).
-The access is through the browser, so it is compatible with any device like,
-smartphone, tablet, pc, etc. So where ever you are and whatever device you have
-available, you should be able to access the web to operate your home.
+It is developed in pure HTML5, CSS, JavaScript and C (Arduino Sketch). The access
+is through the browser, so it is compatible with any device like, smartphone,
+tablet, pc, etc. So where ever you are and whatever device you have available,
+you should be able to access the web to operate your home.
 
-There are two themes, the default is based on iOS 7 another is based on Android
-5, can be easily modified. It was tested with Arduino Uno and Arduino Mega 2650,
-isn't a restriction, can be easily adapted to work with other boards like
-Raspberry Pi, BeagleBone, etc.
+There are two stylesheet, the default is based on iOS 7 another is based on
+Android 5, you can easily modified to create your own. It was tested with Arduino
+Uno and Arduino Mega 2650, isn't a restriction, can be easily adapted to work
+with other boards like Raspberry Pi, BeagleBone, etc.
 
 The code was designed to be easy to add new sensors, is used the DHT11 sensor
 for temperature and humidity, you can use it with example.

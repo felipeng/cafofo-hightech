@@ -2,7 +2,7 @@
 
 ## Arduino
 
-1. Open the sketch in the Arduino IDE
+1. Open the `sketch/cafofo-hightech/cafofo-hightech.ino` in the Arduino IDE
 2. Adjust the values below
   * IP address: `IPAddress ip(192,168,0,1);`
   * Fill the pins array: `int pins[] = {0, 1, 2, 5, 6, 7, 8, 9};`
@@ -19,6 +19,19 @@
 It's not obligatorily needed host the web-app files on the Arduino SD. In other
 words, you can just adjust the `arduinoIP` variable under main.js file, pointing
 to the arduino's IP.
+
+It's is possible to use the page like a native application, follow these steps:
+
+On iOS
+* Open the page on Safari
+* Tap on share button and `Add to Home Screen`
+
+On Android
+* Open the page on Chrome
+* Tap on settings (3 dots button) on upper right screen
+* Save to bookmarks
+* Change the value on: Add to: Home Screen
+
 
 ## Coding, some tips for you...
 
