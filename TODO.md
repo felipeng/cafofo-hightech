@@ -18,7 +18,6 @@ C
 * primeira vez que liga o led do onewire fica acesso, até a primeira requisição.
 
 
-
 TODO v0.2
 =========
 

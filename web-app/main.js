@@ -12,8 +12,8 @@ created 2014 by Felipe Nogaroto Gonzalez - felipeng84 @ gmail . com
 // Configurations
 arduinoIP = ''; // URL of the Arduino, if is localhost, leave it blank
 refresh = 1000;	// in miliseconds
-debug = 1;      // browser console
-ajax_cache = 1;	// recommended to use without AJAX cache, 0
+debug = 0;      // browser console
+ajax_cache = 0;	// recommended to use without AJAX cache, 0
 
 // Requests the status.xml, parses the values and updates the HTML
 var request = new XMLHttpRequest();
@@ -29,7 +29,6 @@ function GetStatus() {
                 for (var i=0;i<temps.length;i++){
                   var temperature = xml.getElementsByTagName('temp_' + temps[i].id)[0].childNodes[0].nodeValue;
                   temps[i].innerHTML = temperature + ' °C';
-                  // temps[i].innerHTML = (temperature / 16).toFixed(0) + ' °C';
                  }
 
                 // Pins (Lamps)
@@ -108,6 +107,6 @@ function slider_color(elem) {
         'right top,',
       // For iOS use #017afd for Android use #009688, on next color
       'color-stop(' + value + ', #017afd),',
-       'color-stop(' + value + ', #a9acb1)',
+      'color-stop(' + value + ', #a9acb1)',
   ')'].join('');
 };
