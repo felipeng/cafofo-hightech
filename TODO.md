@@ -1,6 +1,12 @@
 TODO v0.1
 =========
 
+Testar a SDFat bilioteca, performance e nome dos arquivos, tamanho, atualizar documentação.
+Testar novo codigo C (reoganizado)
+colocar versão
+tirar o TODO do repositório
+
+
 Documentar
 * Relação entre id e pino
 * Imagem e video
@@ -12,7 +18,6 @@ Sketch
 HTML
 * ver se tem como tirar o style do ranger color do javascript e passar para o CSS
 * fazer slider funcionar no FF
-* Ambient: fita led nao está funcionando corretamente
 
 C
 * primeira vez que liga o led do onewire fica acesso, até a primeira requisição.
@@ -29,6 +34,5 @@ JS
 
 HTML
 * Convert XML response to JSON
-
 * remover referencias sobre arduino
 * criar server para o RPI

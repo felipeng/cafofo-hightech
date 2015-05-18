@@ -44,7 +44,7 @@ void setup() {
   pinMode(7, OUTPUT);
   pinMode(8, OUTPUT);
   pinMode(9, OUTPUT);
-  
+
   // Ethernet Shield - Reserved Pins
   pinMode(10, OUTPUT);
   digitalWrite(10, HIGH);
@@ -67,7 +67,6 @@ void loop() {
       if (client.available()) {
           String HTTP_request = client.readStringUntil('\n');
           if ((HTTP_request.startsWith("GET ")) && (HTTP_request.endsWith("\r"))) {
-//            sscanf(HTTP_request.c_str(), "GET /%99[^&/ ]/%99[^/]/%99d/%99d", arg1, arg2, &arg3, &arg4);
             sscanf(HTTP_request.c_str(), "GET /%15[^&/ ]/%15[^/]/%2d/%4d", arg1, arg2, &arg3, &arg4);
             HTTP_switch(client, arg1, arg2, arg3, arg4);
             delay(1);
@@ -105,16 +104,16 @@ void HTTP_switch(EthernetClient client, char arg1[20], char oper[20], int pin, i
         int pinValue = analogRead(pin);
         HTTP_reply(client, pinValue);
       }
-  } else if (SD.exists(arg1)) {
-      HTTP_reply_file(client, arg1);
+//  } else if (SD.exists(arg1)) {
+//      HTTP_reply_file(client, arg1);
   } else {
-     HTTP_reply_invalid(client);
+    HTTP_reply_file(client, arg1);
+//     HTTP_reply_invalid(client);
   }
 }
 
 // HTTP reply with the value
 void HTTP_reply(EthernetClient client, int value) {
-  client.println();
   client.println("HTTP/1.1 200 OK");
   client.println("Access-Control-Allow-Origin: *");
   client.println("Content-Type: text/plain");
@@ -124,46 +123,60 @@ void HTTP_reply(EthernetClient client, int value) {
 }
 
 // HTTP reply if the request is not valid
-void HTTP_reply_invalid(EthernetClient client){
-  client.println();
-  client.println("HTTP/1.1 406 Not Acceptable");
-  client.println("Access-Control-Allow-Origin: *");
-  client.println("Content-Type: text/plain");
+//void HTTP_reply_invalid(EthernetClient client){
+//  client.println("HTTP/1.1 406 Not Acceptable");
+//  client.println("Access-Control-Allow-Origin: *");
+//  client.println("Content-Type: text/plain");
+//  client.println("Connection: close");
+//  client.println();
+//  client.println(406);
+//}
+
+// HTTP reply with 404
+void HTTP_reply_404(EthernetClient client) {
+  client.println("HTTP/1.1 404 OK");
   client.println("Connection: close");
   client.println();
-  client.println(406);
 }
 
 // HTTP reply if the request is a valid file
 void HTTP_reply_file(EthernetClient client, char arg1[20]){
-  client.println();
   client.println("HTTP/1.1 200 OK");
   char * ext = strrchr(arg1,'.');
   if (strcmp(ext, ".htm") == 0) {
     client.println("Content-Type: text/html");
+  } else if (strcmp(ext, ".css") == 0) {
+    client.println("Content-Type: text/css");
+  } else if (strcmp(ext, ".js") == 0) {
+    client.println("Content-Type: text/javascript");
   } else if (strcmp(ext, ".png") == 0) {
     client.println("Content-Type: image/png");
   }
   client.println("Connection: close");
   client.println();
   File webFile = SD.open(arg1);
-  if (webFile) {
-      while(webFile.available()) {
-          client.write(webFile.read());
-      }
-      webFile.close();
+  if (SD.exists(arg1)) {
+    if (webFile) {
+        while(webFile.available()) {
+            client.write(webFile.read());
+        }
+        webFile.close();
+    }
+   else {
+     HTTP_reply_404(client);
+   }
   }
 }
 
 // HTTP reply with the values in xml file
 void HTTP_reply_xml(EthernetClient client) {
-  client.println();
   client.println("HTTP/1.1 200 OK");
   client.println("Access-Control-Allow-Origin: *");
   client.println("Connection: close");
   client.println();
   client.println("<?xml version = \"1.0\" ?>");
   client.println("<arduino>");
+
   // Temperature (DHT11 sensor)
   client.print("<temp_9>");
   client.print(getTemperature());

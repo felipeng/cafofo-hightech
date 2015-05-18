@@ -166,7 +166,7 @@ input[type="range"]{
     -webkit-appearance: none;
     -moz-apperance: none;
     outline: none;
-    width: 50%;
+    width: 40%;
     height: 4px;
     padding: 0;
     margin: 16px 5px 0px 5px;

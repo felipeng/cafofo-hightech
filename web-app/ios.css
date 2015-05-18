@@ -160,7 +160,7 @@ input[type="range"]{
     cursor: pointer;
     -webkit-appearance: none;
     -moz-apperance: none;
-    width: 50%;
+    width: 40%;
     height: 2px;
     padding: 0;
     border-left: 0px solid #017afd;

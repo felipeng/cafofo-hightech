@@ -22,7 +22,7 @@ for temperature and humidity, you can use it with example.
 ## Components
 
 * Arduino
-* Ethernet Shield com leitor SD
+* Ethernet Shield with SD reader
 * SD card to store HTML5, CSS, JavaScript and image files
 * Jumpers
 * LEDs
