@@ -10,14 +10,14 @@ created 2014 by Felipe Nogaroto Gonzalez - felipeng84 @ gmail . com
 */
 
 body{
-    font-family: 'Helvetica Neue', Helvetica, Roboto, Arial, sans-serif;
+    font-family: Roboto, Helvetica;
     font-size: 12pt;
     -moz-osx-font-smoothing: grayscale;
 }
 
 a{
     text-decoration: none;
-    color: #fff;
+    color: #71A59D;
     font-weight: bold;
 }
 
@@ -53,46 +53,34 @@ h2{
 }
 
 .top{
-    background-color: #263238;
-    border-bottom: 2px solid #E1E1E1;
+    background-color: #085248;
     margin: -10px -8px -9px -9px;
+    border-bottom: 1px solid lightgray;
     padding: 10px 0px 5px 0px;
     height: 35px;
+    text-transform: uppercase;
 }
 
 .tabs{
-    height:30px;
-    line-height:27px;
+    height: 100%;
+    line-height: 37px;
     text-align:center;
-    width: 85%;
-    margin-left: 10%;
-    margin-right: 10%;
+    width: 100%;
+    letter-spacing: 1px;
 }
 
 .tabs-three>.tab{
-    width:30%
+    width:33%
 }
 
 .tab{
     float:left;
     font-size: 10pt;
-    border:1px solid #FFFFFF;
-    border-right-width:0
-}
-
-.tab:first-child{
-    border-radius:4px 0 0 4px
-}
-
-.tab:last-child{
-    border-right-width:1px;
-    border-radius:0 4px 4px 0
 }
 
 .tab.active{
-    color:#009688;
-    background: #FFFFFF;
-    border-color: #FFFFFF;
+    color:#FFFFFF;
+    border-bottom: 3px solid #FFFFFF;
 }
 
 .icon{
