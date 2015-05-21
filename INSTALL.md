@@ -51,7 +51,6 @@ pins:
   * Arduino Uno: 4, 10, 11, 12 and 13
   * Ardino Mega 2650: 4, 10, 50, 51 and 52
 
-
 2. File names on SD card, the file system FAT16 and the SD card library does not
 support 'long filenames'. It uses the 8.3 format for file names, so keep file
 names short and don't use any special characters, more information about 8.3
@@ -62,7 +61,5 @@ file names: http://en.wikipedia.org/wiki/8.3_filename, follow this simples rules
   * in resume, use file names like this: image.jpg, test.htm (again don't use .html)
 
 3. Auto refresh, the variable 'refresh' under main.js, can not be `0`
-
 4. Do not connect any jumper on digital pin 0 and 1 when you are loading to Arduino.
-
 5. List of files are allowed to be stored on SD card: .htm, .png, .css, .js

@@ -1,5 +1,6 @@
 # Cafofo Hightech
 
+![Cafofo Hightech](/web-app/logo.png)
 The project Cafofo Hightech was developed to be a web platform for home automation
 using Arduino boards and communication is through REST API. It was born from a
 personal project for home automation of an apartment, after much study and
