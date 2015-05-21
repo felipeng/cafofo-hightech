@@ -20,7 +20,7 @@ It's not obligatorily needed host the web-app files on the Arduino SD. In other
 words, you can just adjust the `arduinoIP` variable under main.js file, pointing
 to the arduino's IP.
 
-It's is possible to use the page like a native application, follow these steps:
+It is possible to use it looks like a native application, follow these steps:
 
 On iOS
 * Open the page on Safari
@@ -46,18 +46,20 @@ pointing to the Arduino, like (http://192.168.0.1/)
 
 # Know Issue and Limitations
 
-1. Reserved pins of Ethernet Shield:
+1. Reserved pins, used by Ethernet Shield, in other words, you can not use this
+pins:
   * Arduino Uno: 4, 10, 11, 12 and 13
   * Ardino Mega 2650: 4, 10, 50, 51 and 52
+
 
 2. File names on SD card, the file system FAT16 and the SD card library does not
 support 'long filenames'. It uses the 8.3 format for file names, so keep file
 names short and don't use any special characters, more information about 8.3
 file names: http://en.wikipedia.org/wiki/8.3_filename, follow this simples rules:
-  * extension must have 3 characters (.html is not valid)
+  * extensions file, must have exactly 3 characters (.html is not valid, use .htm)
   * file name (without extensions) can have till 8 characters
   * do not split files into folders (yes it's sucks)
-  * in resume, use file names like this: image.jpg, test.htm (don't use .html)
+  * in resume, use file names like this: image.jpg, test.htm (again don't use .html)
 
 3. Auto refresh, the variable 'refresh' under main.js, can not be `0`
 
