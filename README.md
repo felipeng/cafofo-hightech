@@ -21,7 +21,7 @@ for temperature and humidity, you can use it with example.
 
 ## Screenshot
 
-![iOS Theme](/screenshots/android.png)
+![iOS Theme](/screenshots/ios.png)
 ![Android Theme](/screenshots/android.png)
 
 ## Components
