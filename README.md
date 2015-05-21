@@ -19,6 +19,11 @@ with other boards like Raspberry Pi, BeagleBone, etc.
 The code was designed to be easy to add new sensors, is used the DHT11 sensor
 for temperature and humidity, you can use it with example.
 
+## Screenshot
+
+![iOS Theme](/screenshots/android.png)
+![Android Theme](/screenshots/android.png)
+
 ## Components
 
 * Arduino

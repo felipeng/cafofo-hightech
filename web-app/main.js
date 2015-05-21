@@ -99,14 +99,23 @@ function ArduinoRequest(URL, new_request){
 
 // Update the color before thumb of input.range elements
 function slider_color(elem) {
+  // For iOS use #017afd for Android use #009688
+  var css_full_path = document.styleSheets.item(1).href
+  var css_file = css_full_path.substring(css_full_path.lastIndexOf('/')+1);
+
+  if ( css_file == "android.css"){
+    slider_color = "#009688";
+  } else {
+    slider_color = "#017afd";
+  }
+
   var value = (elem.value - elem.min)/(elem.max - elem.min);
   elem.style.backgroundImage = [
 	'-webkit-gradient(',
         'linear,',
         'left top,',
         'right top,',
-      // For iOS use #017afd for Android use #009688, on next color
-      'color-stop(' + value + ', #017afd),',
+      'color-stop(' + value + ',' + slider_color + '),',
       'color-stop(' + value + ', #a9acb1)',
   ')'].join('');
 };
