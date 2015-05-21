@@ -38,7 +38,6 @@ void setup() {
   pinMode(1, OUTPUT);
   pinMode(2, OUTPUT);
   pinMode(3, OUTPUT);
-  SD.begin(4);
   pinMode(5, OUTPUT);
   pinMode(6, OUTPUT);
   pinMode(7, OUTPUT);
@@ -46,6 +45,8 @@ void setup() {
   pinMode(9, OUTPUT);
 
   // Ethernet Shield - Reserved Pins
+  SD.begin(4);
+
   pinMode(10, OUTPUT);
   digitalWrite(10, HIGH);
   byte mac[8] = { 0xDE, 0xAD, 0xBE, 0xEF, 0xFE, 0xED };
@@ -104,11 +105,8 @@ void HTTP_switch(EthernetClient client, char arg1[20], char oper[20], int pin, i
         int pinValue = analogRead(pin);
         HTTP_reply(client, pinValue);
       }
-//  } else if (SD.exists(arg1)) {
-//      HTTP_reply_file(client, arg1);
   } else {
     HTTP_reply_file(client, arg1);
-//     HTTP_reply_invalid(client);
   }
 }
 
@@ -121,16 +119,6 @@ void HTTP_reply(EthernetClient client, int value) {
   client.println();
   client.println(value);
 }
-
-// HTTP reply if the request is not valid
-//void HTTP_reply_invalid(EthernetClient client){
-//  client.println("HTTP/1.1 406 Not Acceptable");
-//  client.println("Access-Control-Allow-Origin: *");
-//  client.println("Content-Type: text/plain");
-//  client.println("Connection: close");
-//  client.println();
-//  client.println(406);
-//}
 
 // HTTP reply with 404
 void HTTP_reply_404(EthernetClient client) {

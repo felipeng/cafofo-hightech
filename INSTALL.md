@@ -5,8 +5,8 @@
 1. Open the `sketch/cafofo-hightech/cafofo-hightech.ino` in the Arduino IDE
 2. Adjust the values below
   * IP address: `IPAddress ip(192,168,0,1);`
-  * Fill the pins array: `int pins[] = {0, 1, 2, 5, 6, 7, 8, 9};`
-  * Fill the PWM pins array: `int pwm_pins[] = {3};`
+  * Fill the pins array: `int pins[] = {0, 1, 2, 6, 7, 8, 9};`
+  * Fill the PWM pins array: `int pwm_pins[] = {3, 5};`
 3. Loads to the Arduino board
 
 ## Web App
